@@ -1,0 +1,227 @@
+# Omni-Agent: Sider + HARPA AI Fusion — Complete Rebuild
+
+## Current State Assessment
+
+### What Exists (Phase 1-2 Legacy)
+The project **builds successfully** (`tsc && vite build` ✅) and has a basic foundation:
+
+| Component | State | Issues |
+|---|---|---|
+| Slide-out sidebar chat | ✅ Functional skeleton | Inline styles + Tailwind classes fighting each other; styles won't work in Shadow DOM since Tailwind classes aren't compiled into the shadow |
+| Page summarization | ✅ Works | Basic prompt, no streaming |
+| Data extraction | ✅ Works | Basic prompt, no export |
+| Draft reply | ✅ Works | Basic prompt, no customization |
+| Custom chat | ✅ Works | No markdown rendering, no code highlighting |
+| Audio transcription | ⚠️ Partially built | TabCapture + offscreen doc wired but fragile |
+| Persistent memory | ✅ Basic | Single `update_core_memory` tool call |
+| Options page | ✅ Works | Only stores API key, very minimal |
+
+### Critical Bugs / "Malfunctioning" Root Causes
+1. **Shadow DOM + Tailwind Mismatch**: The content script injects styles via `?inline` import, but Tailwind's `@tailwind base/components/utilities` generates massive CSS that may not properly compile into the inline string. The sidebar likely renders **unstyled or broken** on many sites.
+2. **Dual-Style Chaos**: Every element has BOTH inline `style={{...}}` objects AND Tailwind `className` strings. The inline styles provide the fallback that actually renders, making the Tailwind classes dead weight.
+3. **No Markdown Rendering**: AI responses use `dangerouslySetInnerHTML` with a broken regex (`/\\ng/` instead of `/\n/g`), producing raw text blobs instead of formatted output.
+4. **No Streaming**: Full responses only — user stares at bouncing dots for 10-30 seconds.
+5. **Extension Context Invalidation**: Handled but with poor UX — just shows an error message.
+
+---
+
+## What Sider + HARPA AI Offer (Feature Matrix)
+
+### From Sider AI
+- ✨ Multi-model switching (GPT-4o, Claude, Gemini, etc.)
+- 📄 PDF/Document upload & analysis
+- 🖼️ AI image generation & editing
+- 📚 Wisebase knowledge management
+- 💬 Group Chat (compare multiple AI answers)
+- ✍️ Writing tools with tone/style adjustment
+- 🔖 Custom prompt library
+
+### From HARPA AI
+- 🤖 Web automation (click, fill forms, navigate)
+- 📊 Website monitoring (price drops, content changes)
+- 🔍 Data extraction → Google Sheets/CSV export
+- 📺 YouTube transcript extraction & interaction
+- 🧩 Custom automation nodes (no-code workflow builder)
+- 🔒 Local-first privacy
+- ⚡ Page-aware contextual AI
+
+---
+
+## Proposed Architecture — Phase 1 (Stabilize + Premium UI)
+
+> [!IMPORTANT]
+> This is a **massive** undertaking. I'm proposing a phased approach. Phase 1 brings the extension to a **fully operational, premium-quality baseline**. Subsequent phases add advanced features.
+
+### Phase 1 Deliverables (This Session)
+
+| # | Feature | Priority |
+|---|---|---|
+| 1 | **Fix Shadow DOM styling** — Replace dual-style chaos with a proper CSS-in-Shadow approach | 🔴 Critical |
+| 2 | **Premium dark-mode UI redesign** — Glassmorphism sidebar, smooth animations, professional typography | 🔴 Critical |
+| 3 | **Markdown rendering** — Proper rendering with code syntax highlighting in AI responses | 🔴 Critical |
+| 4 | **Streaming responses** — Real-time token streaming from Gemini API | 🟡 High |
+| 5 | **Multi-model support** — Model selector (Gemini Flash, Gemini Pro, + architecture for OpenAI/Anthropic) | 🟡 High |
+| 6 | **YouTube transcript extraction** — Auto-detect YouTube pages, extract transcript, enable Q&A | 🟡 High |
+| 7 | **Enhanced macro system** — Expand macros: Translate, Explain Code, Rewrite, Custom tone selector | 🟡 High |
+| 8 | **Export capabilities** — Copy to clipboard, download as Markdown, export data as CSV | 🟢 Medium |
+| 9 | **Enhanced Options page** — Multi-provider API key management, model selection, theme toggle | 🟢 Medium |
+| 10 | **Keyboard shortcuts** — `Ctrl+Shift+O` to toggle sidebar, `/` commands in chat | 🟢 Medium |
+
+### Phase 2 Deliverables (Future)
+- Web automation engine (DOM interaction, form filling)
+- Website monitoring & alerts
+- PDF/Document upload analysis
+- Custom automation workflow builder (node-based)
+- Prompt library with save/load
+- Wisebase-style knowledge management
+- AI image generation integration
+
+---
+
+## Proposed Changes
+
+### Component 1: Build System & Styling Fix
+
+#### [MODIFY] [manifest.json](file:///c:/Users/findb/OneDrive/Desktop/AntiGravity_Agents/omni-agent/manifest.json)
+- Add `commands` for keyboard shortcuts
+- Add `sidePanel` permission for future side panel API
+- Update description and permissions
+
+#### [MODIFY] [tailwind.config.js](file:///c:/Users/findb/OneDrive/Desktop/AntiGravity_Agents/omni-agent/tailwind.config.js)
+- Add dark mode config, custom color palette, animation extensions
+- Configure for Shadow DOM content scanning
+
+#### [MODIFY] [tailwind.css](file:///c:/Users/findb/OneDrive/Desktop/AntiGravity_Agents/omni-agent/src/styles/tailwind.css)
+- Add custom animations, glassmorphism utilities, typography presets
+- Import Google Fonts (Inter)
+
+---
+
+### Component 2: Background Service Worker (Brain)
+
+#### [MODIFY] [background.ts](file:///c:/Users/findb/OneDrive/Desktop/AntiGravity_Agents/omni-agent/src/background.ts)
+- Refactor into modular architecture
+- Add streaming support via `generateContentStream`
+- Add multi-model provider abstraction
+- Add YouTube transcript extraction handler
+- Add export handlers (CSV, Markdown)
+- Add keyboard shortcut command listener
+- Add website monitoring alarm system stub
+
+---
+
+### Component 3: Content Script (UI)
+
+#### [DELETE] [AgentOverlay.tsx](file:///c:/Users/findb/OneDrive/Desktop/AntiGravity_Agents/omni-agent/src/content/AgentOverlay.tsx)
+Replace with modular component architecture:
+
+#### [NEW] `src/content/components/Sidebar.tsx`
+- Main sidebar container with glassmorphism design
+- Resizable width, smooth open/close animation
+- Dark mode with premium gradient header
+
+#### [NEW] `src/content/components/ChatMessage.tsx`
+- Proper Markdown rendering with code blocks
+- Syntax highlighting via lightweight inline highlighter
+- Copy-to-clipboard on code blocks
+- User/AI message bubbles with distinct styling
+
+#### [NEW] `src/content/components/MacroBar.tsx`
+- Expanded macro buttons: Summarize, Extract Data, Draft Reply, Translate, Explain Code, Rewrite
+- Scrollable horizontal bar with tooltips
+- Tone/style selector dropdown for writing macros
+
+#### [NEW] `src/content/components/ChatInput.tsx`
+- Multi-line textarea with auto-resize
+- `/command` detection and autocomplete
+- File attachment button (future PDF support)
+- Model selector inline badge
+
+#### [NEW] `src/content/components/ModelSelector.tsx`
+- Dropdown to switch between AI models
+- Visual indicator of active model
+- Grouped by provider (Google, OpenAI, Anthropic)
+
+#### [NEW] `src/content/components/StreamingText.tsx`
+- Progressive token rendering with cursor animation
+- Markdown parsing on-the-fly
+
+#### [NEW] `src/content/components/YouTubePanel.tsx`
+- Auto-detects YouTube pages
+- Shows video transcript with timestamps
+- "Ask about this video" quick action
+
+#### [MODIFY] [index.tsx](file:///c:/Users/findb/OneDrive/Desktop/AntiGravity_Agents/omni-agent/src/content/index.tsx)
+- Update to mount new component tree
+- Improve Shadow DOM style injection
+- Add font loading for Inter
+
+---
+
+### Component 4: Options Page
+
+#### [MODIFY] [options.tsx](file:///c:/Users/findb/OneDrive/Desktop/AntiGravity_Agents/omni-agent/src/options/options.tsx)
+- Multi-provider API key fields (Gemini, OpenAI, Anthropic)
+- Default model selector
+- Theme preference toggle (light/dark/system)
+- Memory brain viewer/editor
+- Premium redesign matching sidebar aesthetic
+
+---
+
+### Component 5: Shared Utilities
+
+#### [NEW] `src/lib/providers.ts`
+- Multi-model provider abstraction
+- Gemini, OpenAI, Anthropic adapters
+- Streaming interface contract
+
+#### [NEW] `src/lib/markdown.ts`
+- Lightweight Markdown → HTML renderer
+- Code block syntax highlighting (no external deps)
+- Sanitization for safe `innerHTML`
+
+#### [NEW] `src/lib/youtube.ts`
+- YouTube transcript extraction from page DOM
+- Timestamp parsing and linking
+
+#### [NEW] `src/lib/storage.ts`
+- Type-safe Chrome storage wrapper
+- Settings, memory, chat history persistence
+
+#### [NEW] `src/lib/export.ts`
+- Markdown file download
+- CSV export for extracted data
+- Clipboard copy with rich text
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Scope Decision**: Phase 1 as described above is substantial (~15-20 new/modified files). I can execute it as a single focused session. Do you want me to proceed with the **full Phase 1**, or start with a smaller slice (e.g., just fix the styling + add streaming + markdown rendering)?
+
+> [!WARNING]
+> **API Keys**: The multi-model support requires API keys for OpenAI and Anthropic if you want to use those providers. Gemini will remain the default. Do you have keys for these, or should I build only the Gemini path for now?
+
+## Open Questions
+
+1. **Extension Name**: Keep "Omni-Agent" or rebrand? (Current manifest says "HARPA Omni-Agent")
+2. **Color Scheme Preference**: I'll default to a dark/slate premium theme with blue accent. Any preference?
+3. **Which AI models do you have API access to?** This determines which providers I wire up in Phase 1.
+
+## Verification Plan
+
+### Automated Tests
+- `npm run build` — Must compile with zero errors
+- Load extension in Chrome via `chrome://extensions` → load unpacked `dist/`
+- Verify sidebar opens/closes on any webpage
+- Verify Tailwind styles render correctly inside Shadow DOM
+- Verify AI responses render with proper Markdown formatting
+- Verify streaming text appears progressively
+
+### Manual Verification
+- Test on 3+ different websites (Google, YouTube, GitHub) to ensure Shadow DOM isolation
+- Test all macro buttons produce valid AI output
+- Test YouTube transcript extraction on a real video
+- Screenshot comparison: before vs. after UI upgrade

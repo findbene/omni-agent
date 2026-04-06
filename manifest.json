@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Omni-Agent",
+  "version": "2.0.0",
+  "description": "An intelligent AI-powered browser assistant combining the best of Sider AI and HARPA AI. Summarize pages, extract data, draft replies, translate, explain code, and more.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Toggle Omni-Agent"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabCapture",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O",
+        "mac": "Command+Shift+O"
+      },
+      "description": "Toggle Omni-Agent sidebar"
+    }
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/index.tsx"],
+      "run_at": "document_idle"
+    }
+  ]
+}
