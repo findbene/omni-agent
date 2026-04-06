@@ -1,0 +1,392 @@
+[
+  {
+    "url": "https://www.projectpro.io/project-use-case/apache-spark-project-beginners",
+    "title": "A Hands-On Approach to Learn Apache Spark using Scala",
+    "description": "Spark Scala Tutorial -Get Started with Apache Spark using Scala for Big Data Analysis",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/aws-cdk-project-for-migrating-iot-based-data",
+    "title": "AWS CDK and IoT Core for Migrating IoT-Based Data to AWS",
+    "description": "AWS CDK Project to Gain Hands-On Experience understanding  Infrastructure-as-a-Code using AWS CDK an  AWS IoT core | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/deploy-multiple-linear-regression-mlops-aws",
+    "title": "AWS MLOps Project to Deploy Multiple Linear Regression Model",
+    "description": "MLOps AWS- Deployment of Multiple Linear Regression Model Example",
+    "skills": "Language - Python, Libraries - Flask, pickle, Services - Flask, AWS, Docker, Lightsail, EC2, Tool: Terraform"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/aws-mlops-project-classification-model-deployment",
+    "title": "AWS MLOps Project to Deploy a Classification Model [Banking]",
+    "description": "MLOps Project for ML Model Deployment on AWS - Deploy a Classification Model on AWS using Flask",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/airline-online-performance",
+    "title": "Airline Dataset Analysis using Hadoop, Hive, Pig and Athena",
+    "description": "Big Data Project- In this hadoop project, you will learn to perform Airline Flight Data Analysis using Hadoop Hive, Pig and Athena",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/bert-text-classification-albert-distilbert",
+    "title": "BERT Text Classification using DistilBERT and ALBERT Models",
+    "description": "Building ALBERT and DistilBERT Models for text classification",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/classification-algorithms-for-digital-transformation-in-banking",
+    "title": "Build Classification Algorithms for Digital Transformation[Banking]",
+    "description": "ML Projects in Finance -Develop a model using types of classification algorithms to predict the probability of liability customers converting to asset customers.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/multi-class-text-classification-models-with-deep-learning-rnn-lstm",
+    "title": "Build Multi Class Text Classification Models with RNN and LSTM",
+    "description": "Learn how to do Multi Class Text Classification with Neural Networks using RNN and LSTM Models",
+    "skills": "Language: Python"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/house-price-prediction-project-using-machine-learning-regression",
+    "title": "Build Regression Models in Python for House Price Prediction",
+    "description": "Solved End-to-End House Price Prediction Project using Advanced Regression Techniques in Machine Learning  with Source Code",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/time-series-projects-autoregressive-model-python",
+    "title": "Build a Autoregressive and Moving Average Time Series Model",
+    "description": "Build autoregressive and moving average time series models to gain valuable skills in time series analysis for sensor data | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/credit-risk-prediction-modelling-in-python-with-lightgbm",
+    "title": "Build a Credit Default Risk Prediction Model with LightGBM",
+    "description": "Machine Learning Project with Source Code for Credit Default Risk Prediction Modelling in Python | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/build-a-data-pipeline-with-azure-synapse-analytics-and-spark-pool",
+    "title": "Build a Data Pipeline with Azure Synapse and Spark Pool",
+    "description": "Azure Synapse Analytics Project to get hands-on experience with the capabilities of Azure Synapse and Spark Pool to perform data transformations.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/getting-started-with-pyspark-on-aws-emr-and-athena",
+    "title": "Build a Financial Data Pipeline using AWS and PySpark",
+    "description": "Solved End-to-End AWS Big Data Project to Build a Financial Data Pipeline using AWS and PySpark | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/streamlit-langchain-chatbot",
+    "title": "Build a Langchain Streamlit Chatbot for EDA using LLMs",
+    "description": "LLM Project to Build a Streamlit Langchain chatbot to interact with SQL databases, providing real-time insights and visualization for streamlined data analysis.",
+    "skills": "Language: Python 3.10.4, Model: Open AI GPT-4"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/music-recommendation-challenge",
+    "title": "Build a Music Recommendation Algorithm using KKBox's Dataset",
+    "description": "Music Recommendation System using Machine Learning in Python Source Code-Use the KKBox dataset to build a music recommendation algorithm.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/spark-streaming-pipeline-with-synapse-and-cosmosdb",
+    "title": "Build a Spark Streaming Pipeline with Synapse and CosmosDB",
+    "description": "Build a Robust Spark streaming pipeline using Azure Synapse Analytics and Azure Cosmos DB | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/speech-to-text-transcriptor-wth-nvidia-quartznet-nemo",
+    "title": "Build a Speech-Text Transcriptor with Nvidia Quartznet Model",
+    "description": "Solved End-to-End Deep Learning Project to Build a Speech to Text Transcriptor using Nvidia Quartznet NeMo Pre-Trained Models | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/etl-pipeline-project-on-aws-emr-using-cdk-and-powerbi",
+    "title": "Build an ETL Pipeline on EMR using AWS CDK and Power BI",
+    "description": "Learn to build an ETL Pipeline on Amazon EMR using AWS CDK and Apache Hive. Visualize results with Power BI | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/etl-pipeline-with-talend-for-exporting-data-from-cloud",
+    "title": "Build an ETL Pipeline with Talend for Export of Data from Cloud",
+    "description": "Talend ETL Project for Building a Robust ETL Pipeline with Talend Open Studio for Secure Export of Cloud Data | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/anomaly-detection-using-deep-learning-and-autoencoders",
+    "title": "Credit Card Anomaly Detection using Autoencoders",
+    "description": "Deep Learning Project-Use the credit card fraud detection dataset to implement state-of-the-art deep learning methods and autoencoders for anomaly detection",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/customer-churn-prediction-using-python",
+    "title": "Customer Churn Prediction Analysis using Ensemble Techniques",
+    "description": "Customer churn prediction analytics using python - includes dataset and churn model.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/data-analysis-of-working-capital-management",
+    "title": "Data Analysis of Working Capital Management using Tableau",
+    "description": "Data Analysis of Working Capital Management: Analyze receivables and payables data to create insightful Tableau dashboards for operational efficiency.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/databricks-data-lineage-and-replication-management",
+    "title": "Databricks Data Lineage and Replication Management",
+    "description": "Databricks Project on data lineage and replication management to help you optimize your data management practices | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/databricks-real-time-streaming",
+    "title": "Databricks Real-Time Streaming with Event Hubs and Snowflake",
+    "description": "Azure Project to process and analyze real-time data with Azure Databricks, Event Hubs, and Snowflake to monitor IoT Devices | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/text-detection-in-images-using-python",
+    "title": "Deep Learning Project for Text Detection in Images using Python",
+    "description": "Text Detection in Images using Deep Learning-Build CRNN  automatically detect and recognize text in natural images using python.",
+    "skills": "Language - Python"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/deep-learning-for-time-series-forecasting",
+    "title": "Deep Learning Project for Time Series Forecasting in Python",
+    "description": "Hands-On Tutorial : Deep Learning for Time Series Forecasting in Python-Learn to develop your own deep learning models for time series forecasting projects.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/ml-model-deployment-abstractive-text-summarization",
+    "title": "Deploy Transformer BART Model for Text summarization on GCP",
+    "description": "Machine Learning Model Deployment on GCP for Abstractive Text Summarization",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/mlops-gcp-rossmann-sales-forcasting-flask",
+    "title": "Deploying Machine Learning Models with Flask for Beginners",
+    "description": "MLOps on GCP to Deploy Machine Learning Models using Flask for Beginners",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/twitter-kafka-spark-streaming-python",
+    "title": "Deploying auto-reply Twitter handle with Kafka, Spark and LSTM",
+    "description": "Twitter Sentiment Analysis using Kafka Spark Streaming Python- Deploy an auto reply Twitter response handler that replies to tweets using  LSTM model.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/all-state-insurance-claims-severity-prediction",
+    "title": "Ensemble Machine Learning Project - All State Insurance Claims Severity Prediction",
+    "description": "Ensemble machine learning project tutorial in python. Prediction of insurance claims severity using the allstate claims dataset.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/feast-feature-store-example-for-scaling-machine-learning",
+    "title": "FEAST Feature Store Example for Scaling Machine Learning",
+    "description": "FEAST Feature Store Example- Learn to use feature store to store curated features for machine learning pipelines in production.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/gcp-explore-cloud-functions-python",
+    "title": "GCP Project to Explore Cloud Functions using Python Part 1",
+    "description": "Explore GCP Cloud Services using Python",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/aws-graph-database-modelling-using-neptune-and-gremlin",
+    "title": "Graph Database Modelling using AWS Neptune and Gremlin",
+    "description": "Perform Graph Database Modelling using AWS Neptune and Gremlin Query Language on Airlines Dataset",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/real-time-end-to-end-pyspark-project-for-beginners",
+    "title": "Hands-On Real Time PySpark Project for Beginners",
+    "description": "Simple PySpark Project for Beginners to learn about the Fundamentals of Spark Architecture",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/identifying-product-bundles-from-sales-data-using-r",
+    "title": "Identifying Product Bundles from Sales Data Using R Language",
+    "description": "Data Science Projects in R- Build a machine learning model in R programming language to Identify product bundles using retail sales datasets.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/insurance-pricing-forecast-using-regression-analysis",
+    "title": "Insurance Pricing Forecast Using XGBoost Regressor",
+    "description": "Solved Machine Learning Project in Python for Insurance Pricing Forecast Using XGBoost Regressor | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/forecast-inventory-demand",
+    "title": "Inventory Demand Forecasting using Machine Learning in R",
+    "description": "Machine Learning Project in R-Use the inventory management dataset of Grupo Bimbo to forecast inventory demand using machine learning in R.",
+    "skills": "Language: R"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/azure-project-for-real-time-data-ingestion-with-azure-purview",
+    "title": "Learn Real-Time Data Ingestion with Azure Purview",
+    "description": "Learn real-time data ingestion and preparation for Azure Purview using Azure Logic Apps,  Azure Storage Account, Azure Data Factory, and Azure SQL.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/pyspark-regression-example-models",
+    "title": "Learn to Build Regression Models with PySpark and Spark MLlib",
+    "description": "Solved End-to-End PySpark Big Data Project for Practice to Implement Regression ML Models in Spark MLlib | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/polynomial-regression-model-in-python-from-scratch",
+    "title": "Learn to Build a Polynomial Regression Model from Scratch",
+    "description": "Solved End-to-End Polynomial Regression Model Example Project for Beginners with Source Code in Python",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/how-to-create-delta-live-tables-in-azure-databricks",
+    "title": "Learn to Create Delta Live Tables in Azure Databricks",
+    "description": "Solved End-to-End Microsoft Azure Project to Create Delta Live Tables in Azure Databricks",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/fundamentals-simple-linear-regression-python-beginners",
+    "title": "Linear Regression Model Project in Python for Beginners Part 1",
+    "description": "Linear Regression Project Idea for Beginners to Build a Simple Linear Regression Model in Python",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/solving-multiple-classification-use-cases-using-h2o",
+    "title": "Loan Eligibility Prediction in Python using H2O.ai",
+    "description": "Loan Prediction using Machine Learning in Python-Build a predictive model using H2O.ai to predict if an applicant is able to repay the loan or not.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/real-time-log-processing-using-streaming-architecture",
+    "title": "Log Analytics Project with Spark Streaming and Kafka",
+    "description": "Log Analytics Spark Streaming Project - Learn how to use spark streaming API for analysing logs data at scale with Python, Spark, Kafka, and NiFi",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/orchestrating-deployment-gcp-kubeflow",
+    "title": "MLOps Project on GCP using Kubeflow for Model Deployment",
+    "description": "MLOps Project on GCP using Kubeflow Pipelines for Model Training and Deployment",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/iot-energy-prediction-use-case",
+    "title": "Machine Learning or Predictive Models in IoT - Energy Prediction Use Case",
+    "description": "IoT Project -Energy Prediction Use Case -Test experimental data using predictive models and break the energy usage.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/creating-many-to-one-lstm",
+    "title": "Many-to-One LSTM for Sentiment Analysis and Text Generation",
+    "description": "LSTM project to help you gain hands-on experience in sentiment analysis and text generation using many-to-one LSTMs | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/data-migration-project-for-migrating-from-mysql-to-aws-cloud",
+    "title": "Migration of MySQL Databases to Cloud AWS using AWS DMS",
+    "description": "IoT-based Data Migration project using AWS DMS and Aurora to migrate real-time data from MySQL Databases to the AWS cloud | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/Nlp-applications-chatbot-nltk-python-example",
+    "title": "Natural language processing Chatbot application using NLTK for text classification",
+    "description": "This machine learning text classification example in python  uses nlp ai to build a nlp chatbot using nltk.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/ola-bike-rides-request-demand-forecast",
+    "title": "Ola Bike Rides Request Demand Forecast",
+    "description": "Taxi Industry Analysis India using Big Data in Ola- Use Ola data to implement Mini Batch K-Means Clustering Algorithm to forecast bike rides request demand.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/mastering-opencv-with-practical-computer-vision-projects",
+    "title": "OpenCV Project to Master Advanced Computer Vision Concepts",
+    "description": "Mastering opencv with Practical Computer Vision Projects -Learn advanced computer vision concepts and algorithms using the OpenCV library in Python",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/orchestrating-an-etl-process-using-aws-step-and-glue-functions",
+    "title": "Orchestrate Redshift ETL using AWS Glue and Step Functions",
+    "description": "AWS Big Data Project - Learn to implement an ETL orchestration process using AWS Glue and Step Functions for Amazon Redshift Cluster.",
+    "skills": "Language: Python3, SQL, Libraries: boto3, sys"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/advanced-pyspark-project-on-dataframe-operations",
+    "title": "PySpark Project to Learn Advanced DataFrame Concepts",
+    "description": "PySpark Big Data Project for Beginners to Learn Advanced Functionalities of PySpark Dataframes and Performance Optimization.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/pyspark-etl-project-to-build-a-data-pipeline-using-kafka-and-redshift",
+    "title": "PySpark Project-Build a Data Pipeline using Kafka and Redshift",
+    "description": "Solved End-to-End PySpark Real Time Project for Practice with Source Code using Apache Kafka and AWS Redshift",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/gan-mnist-pytorch",
+    "title": "PyTorch Project to Build a GAN Model on MNIST Dataset",
+    "description": "Solved End-to-End Deep Learning GAN Project on MNIST Dataset for Generating Handwritten Digits | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/lstm-text-classification-using-pytorch",
+    "title": "PyTorch Project to Build a LSTM Text Classification Model",
+    "description": "PyTorch Project -Solved End-to-End LSTM Text Classification using PyTorch in Python with Source Code",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/python-and-mongodb-project-for-beginners-with-source-code",
+    "title": "Python and MongoDB Project for Beginners with Source Code-Part 1",
+    "description": "Python MongoDB Project for Beginners to Perform Data Analysis using PyMongo on Atlas Cluster whilst exploring Aggregations | ProjectPro",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/collaborative-filtering-recommender-systems-project",
+    "title": "Recommender System Machine Learning Project for Beginners-4",
+    "description": "Collaborative Filtering Recommender Systems Project - Build Model Based and Memory Based Recommendation System in Python.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/data-wrangling-with-sql",
+    "title": "SQL Project for Data Analysis using Oracle Database-Part 6",
+    "description": "Solved End-to-End SQL Project with Source Code for Data Wrangling in SQL",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/snowflake-real-time-data-warehouse-project-for-beginners",
+    "title": "Snowflake Real Time Data Warehouse Project for Beginners-1",
+    "description": "Snowflake Sample Data Warehouse Project for Beginners to understand and implement the Snowflake architecture in real-time.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/analyze-visualize-online-review-data-using-spark-elasticsearch",
+    "title": "Spark Project-Analysis and Visualization on Yelp Dataset",
+    "description": "Yelp Dataset Challenge Ideas - Work with Yelp data to analyse business reviews and visualize the reports to help businesses understand their performance.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/time-series-forecasting-1",
+    "title": "Time Series Analysis Project in R on Stock Market forecasting",
+    "description": "Time Series Projects in R - Build a time series forecasting model to predict the stock prices in financial markets to provide adequate guidance to investors.",
+    "skills": "Language used: R"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/greykite-time-series-forecasting-python",
+    "title": "Time Series Python Project using Greykite and Neural Prophet",
+    "description": "Time Series Forecasting Project Python- Explore the time series forecasting library Greykite to work with typical time series Walmart sales data for analysis.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/walmart",
+    "title": "Walmart Sales Forecasting Data Science Project",
+    "description": "In this data science project you will use historical markdown data of 45 Walmart stores from the Walmart Dataset to predict the sales while considering the holiday markdown events included in the retail dataset.",
+    "skills": "See description"
+  },
+  {
+    "url": "https://www.projectpro.io/project-use-case/dbt-snowflake-project-to-master-dbt-in-snowflake",
+    "title": "dbt Snowflake Project to Master dbt Fundamentals in Snowflake",
+    "description": "dbt Snowflake Project to master the fundamentals of DBT, including data modeling, logging, and materializations using Netflix data stored in Snowflake.",
+    "skills": "See description"
+  }
+]
