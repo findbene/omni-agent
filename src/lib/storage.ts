@@ -84,17 +84,37 @@ const DEFAULT_SETTINGS: OmniSettings = {
   autoSendTranscription: false,
 };
 
+/** Returns false when the extension has been reloaded/updated and the content script context is stale. */
+export function isExtensionContextValid(): boolean {
+  try {
+    return !!chrome.runtime?.id;
+  } catch {
+    return false;
+  }
+}
+
 export async function getSettings(): Promise<OmniSettings> {
-  const data = await chrome.storage.local.get(Object.keys(DEFAULT_SETTINGS));
-  return { ...DEFAULT_SETTINGS, ...data } as OmniSettings;
+  if (!isExtensionContextValid()) return { ...DEFAULT_SETTINGS };
+  try {
+    const data = await chrome.storage.local.get(Object.keys(DEFAULT_SETTINGS));
+    return { ...DEFAULT_SETTINGS, ...data } as OmniSettings;
+  } catch {
+    return { ...DEFAULT_SETTINGS };
+  }
 }
 
 export async function saveSetting(key: keyof OmniSettings, value: unknown): Promise<void> {
-  await chrome.storage.local.set({ [key]: value });
+  if (!isExtensionContextValid()) return;
+  try {
+    await chrome.storage.local.set({ [key]: value });
+  } catch { /* context gone */ }
 }
 
 export async function saveSettings(updates: Partial<OmniSettings>): Promise<void> {
-  await chrome.storage.local.set(updates);
+  if (!isExtensionContextValid()) return;
+  try {
+    await chrome.storage.local.set(updates);
+  } catch { /* context gone */ }
 }
 
 export async function appendBrainFact(fact: string): Promise<string> {
@@ -102,7 +122,7 @@ export async function appendBrainFact(fact: string): Promise<string> {
   // Deduplicate: don't append if the fact is already present
   if (omniAgentBrain.includes(fact.trim())) return omniAgentBrain;
   const updated = omniAgentBrain ? `${omniAgentBrain}\n- ${fact}` : `- ${fact}`;
-  await chrome.storage.local.set({ omniAgentBrain: updated });
+  await saveSetting('omniAgentBrain', updated);
   return updated;
 }
 
@@ -115,5 +135,11 @@ export async function importSettings(json: string): Promise<void> {
   const parsed = JSON.parse(json);
   // Validate it's an object with expected keys
   if (typeof parsed !== 'object' || parsed === null) throw new Error('Invalid settings file');
-  await chrome.storage.local.set(parsed);
+  await saveSettings(parsed);
+}
+
+/** Safely call chrome.storage.local.set — silently no-ops if context is invalidated. */
+export function safeStorageSet(items: Record<string, unknown>): void {
+  if (!isExtensionContextValid()) return;
+  try { chrome.storage.local.set(items); } catch { /* context gone */ }
 }

@@ -27,6 +27,7 @@ export interface ResearchContext {
  * Send a message to background to do a fetch (avoids CORS in content scripts).
  */
 async function backgroundFetch(url: string): Promise<string> {
+  if (!chrome.runtime?.id) throw new Error('Extension context invalidated');
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => reject(new Error('Fetch timeout')), 15000);
     chrome.runtime.sendMessage({ type: 'RESEARCH_FETCH', url }, (response) => {

@@ -7,7 +7,7 @@ import KnowledgePanel from './KnowledgeBase';
 import { MODELS, DEFAULT_MODEL } from '../../lib/providers';
 import { isYouTubePage, buildYouTubeContext } from '../../lib/youtube';
 import type { Message } from '../../lib/storage';
-import { CustomPrompt, getSettings } from '../../lib/storage';
+import { CustomPrompt, getSettings, safeStorageSet, isExtensionContextValid } from '../../lib/storage';
 import { extractTextFromPDF } from '../../lib/pdf';
 import { extractPageContent } from '../../lib/pageExtractor';
 import { captureScreenshot, getClipboardImage } from '../../lib/screenshot';
@@ -59,6 +59,7 @@ export default function Sidebar() {
   const [compareMessages, setCompareMessages] = useState<SidebarInternalMessage[]>([]);
   const [lastRequest, setLastRequest] = useState<{ action: string; label: string; extra?: Record<string, string> } | null>(null);
   const [showModelMenu, setShowModelMenu] = useState(false);
+  const [contextInvalid, setContextInvalid] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -106,8 +107,12 @@ export default function Sidebar() {
         }
       }
     };
-    chrome.runtime.onMessage.addListener(handler);
-    return () => chrome.runtime.onMessage.removeListener(handler);
+    try {
+      chrome.runtime.onMessage.addListener(handler);
+    } catch {
+      setContextInvalid(true);
+    }
+    return () => { try { chrome.runtime.onMessage.removeListener(handler); } catch { /* gone */ } };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-resize textarea
@@ -140,7 +145,7 @@ export default function Sidebar() {
     };
     const onUp = () => {
       setIsDragging(false);
-      chrome.storage.local.set({ sidebarWidth });
+      safeStorageSet({ sidebarWidth });
     };
     document.addEventListener('mousemove', onMove);
     document.addEventListener('mouseup', onUp);
@@ -231,6 +236,7 @@ export default function Sidebar() {
           setResearchProgress(null);
           const researchPrompt = buildResearchPrompt(ctx);
           // Now send to AI
+          if (!isExtensionContextValid()) { setContextInvalid(true); setLoading(false); return; }
           const port = chrome.runtime.connect({ name: 'omni-stream' });
           port.postMessage({
             action: 'CUSTOM_PROMPT',
@@ -264,6 +270,12 @@ export default function Sidebar() {
         return;
       }
 
+      if (!isExtensionContextValid()) {
+        setContextInvalid(true);
+        setLoading(false);
+        setMessages(prev => [...prev, { role: 'ai', content: '🚨 Extension updated. Please refresh this page (F5).' }]);
+        return;
+      }
       try {
         const port = chrome.runtime.connect({ name: 'omni-stream' });
         port.postMessage({
@@ -340,11 +352,11 @@ export default function Sidebar() {
         });
       } catch (e: unknown) {
         setLoading(false);
-        const errMsg = e instanceof Error
-          ? (e.message.includes('Extension context invalidated')
-            ? '🚨 Extension updated. Please refresh this page (F5).'
-            : `❌ ${e.message}`)
-          : `❌ Unknown error`;
+        const isInvalidated = e instanceof Error && e.message.includes('Extension context invalidated');
+        if (isInvalidated) setContextInvalid(true);
+        const errMsg = isInvalidated
+          ? '🚨 Extension updated. Please refresh this page (F5).'
+          : `❌ ${e instanceof Error ? e.message : 'Unknown error'}`;
         setMessages(prev => [...prev, { role: 'ai', content: errMsg }]);
       }
     }, 30);
@@ -558,8 +570,14 @@ export default function Sidebar() {
 
       {/* Floating Action Button */}
       {!isOpen && (
-        <button className="omni-fab" onClick={() => setIsOpen(true)} aria-label="Open Omni-Agent">
-          <Bot size={26} />
+        <button
+          className="omni-fab"
+          onClick={() => contextInvalid ? window.location.reload() : setIsOpen(true)}
+          aria-label={contextInvalid ? 'Extension updated — click to reload page' : 'Open Omni-Agent'}
+          title={contextInvalid ? '⚠️ Extension updated. Click to reload the page.' : undefined}
+          style={contextInvalid ? { background: 'linear-gradient(135deg, #ef4444, #dc2626)', animation: 'none' } : undefined}
+        >
+          {contextInvalid ? '↻' : <Bot size={26} />}
         </button>
       )}
 
@@ -621,7 +639,7 @@ export default function Sidebar() {
                           {providerModels.map(m => (
                             <button
                               key={m.id}
-                              onClick={() => { setSelectedModel(m.id); setShowModelMenu(false); chrome.storage.local.set({ selectedModel: m.id }); }}
+                              onClick={() => { setSelectedModel(m.id); setShowModelMenu(false); safeStorageSet({ selectedModel: m.id }); }}
                               style={{
                                 display: 'flex', alignItems: 'center', gap: '8px', width: '100%',
                                 padding: '6px 8px', borderRadius: '8px', border: 'none', cursor: 'pointer',
@@ -656,7 +674,7 @@ export default function Sidebar() {
               {/* Compare Mode */}
               <button className="omni-header-btn" onClick={() => setCompareMode(!compareMode)} title="Compare AI models" aria-label="Compare mode" style={{ background: compareMode ? 'rgba(99,102,241,0.4)' : undefined }}><SplitSquareHorizontal size={15} /></button>
               {/* Theme Toggle */}
-              <button className="omni-header-btn" onClick={() => { const next = isDark ? 'light' : 'dark'; setTheme(next); chrome.storage.local.set({ theme: next }); }} title="Toggle theme" aria-label="Toggle theme">
+              <button className="omni-header-btn" onClick={() => { const next = isDark ? 'light' : 'dark'; setTheme(next); safeStorageSet({ theme: next }); }} title="Toggle theme" aria-label="Toggle theme">
                 {isDark ? <Sun size={15} /> : <Moon size={15} />}
               </button>
               {/* Close */}

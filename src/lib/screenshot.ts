@@ -15,6 +15,7 @@ export interface CapturedImage {
  * Returns a base64 PNG data URL.
  */
 export async function captureScreenshot(): Promise<CapturedImage> {
+  if (!chrome.runtime?.id) throw new Error('Extension context invalidated');
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => reject(new Error('Screenshot timed out')), 10000);
     chrome.runtime.sendMessage({ type: 'CAPTURE_SCREENSHOT' }, (response) => {
