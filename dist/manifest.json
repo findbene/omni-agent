@@ -43,20 +43,33 @@
     "open_in_tab": true
   },
   "background": {
-    "service_worker": "src/background.ts",
+    "service_worker": "service-worker-loader.js",
     "type": "module"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["src/content/index.tsx"],
+      "js": [
+        "assets/index.tsx-loader-DctRDFSo.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
       "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["icons/*.png"],
-      "matches": ["<all_urls>"]
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "icons/*.png",
+        "assets/pdf.worker-xSiVJ7U_.mjs",
+        "assets/storage-BlwLxR4a.js",
+        "assets/providers-D-5k4Gey.js",
+        "assets/index.tsx-CMLtpbUm.js"
+      ],
+      "use_dynamic_url": false
     }
   ]
 }

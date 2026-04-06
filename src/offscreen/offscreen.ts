@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message.target !== 'offscreen') return;
 
   if (message.type === 'startRecording') {
-    startRecording(message.streamId).then(() => sendResponse({ status: 'started' })).catch((e) => sendResponse({ error: e.message }));
+    startRecording().then(() => sendResponse({ status: 'started' })).catch((e) => sendResponse({ error: e.message }));
     return true;
   }
 
@@ -13,28 +13,31 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     stopRecording().then((base64) => sendResponse({ status: 'stopped', base64 })).catch((e) => sendResponse({ error: e.message }));
     return true;
   }
+
+  if (message.type === 'parseDOM') {
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(message.html, 'text/html');
+      const el = doc.querySelector(message.selector);
+      const result = el ? (el.textContent || '').trim() : null;
+      sendResponse({ result });
+    } catch (e: any) {
+      sendResponse({ error: e.message });
+    }
+    return false; // Sync response
+  }
 });
 
-async function startRecording(streamId: string) {
+async function startRecording() {
   if (recorder && recorder.state === 'recording') {
     throw new Error('Already recording.');
   }
 
-  // Request the audio stream using the TabCapture Stream ID
+  // Request user microphone using standard getUserMedia
   const mediaStream = await navigator.mediaDevices.getUserMedia({
-    audio: {
-      mandatory: {
-        chromeMediaSource: 'tab',
-        chromeMediaSourceId: streamId
-      }
-    } as any,
+    audio: true,
     video: false
   });
-
-  // VERY IMPORTANT: Route the captured audio to the computer speakers so the user can still hear the video!
-  const audioContext = new AudioContext();
-  const source = audioContext.createMediaStreamSource(mediaStream);
-  source.connect(audioContext.destination);
 
   recorder = new MediaRecorder(mediaStream, { mimeType: 'audio/webm' });
   
@@ -46,7 +49,6 @@ async function startRecording(streamId: string) {
 
   recorder.onstop = () => {
     mediaStream.getTracks().forEach((track) => track.stop());
-    audioContext.close();
   };
 
   recorder.start();
