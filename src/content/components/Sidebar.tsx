@@ -97,6 +97,19 @@ export default function Sidebar() {
     });
   }, [isOpen]);
 
+  // Proactively detect when extension context is invalidated (e.g. after reload/update)
+  // so the FAB turns red before any chrome API call throws.
+  useEffect(() => {
+    const interval = setInterval(() => {
+      try {
+        if (!chrome.runtime?.id) setContextInvalid(true);
+      } catch {
+        setContextInvalid(true);
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Listen for toggle from background
   useEffect(() => {
     const handler = (msg: { type: string; action?: string; selectedText?: string; openSidebar?: boolean }) => {
