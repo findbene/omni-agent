@@ -12,6 +12,7 @@ import { extractTextFromPDF } from '../../lib/pdf';
 import { extractPageContent } from '../../lib/pageExtractor';
 import { captureScreenshot, getClipboardImage } from '../../lib/screenshot';
 import { conductResearch, buildResearchPrompt } from '../../lib/research';
+import { captureVideoAudio, transcribeVideoAudio, getVideoSourceTitle, type VideoTranscribeProgress } from '../../lib/videoTranscribe';
 import {
   getOrCreateConversation, createNewConversation, getConversationMessages,
   appendMessage, getAllConversations, deleteConversation,
@@ -60,6 +61,9 @@ export default function Sidebar() {
   const [lastRequest, setLastRequest] = useState<{ action: string; label: string; extra?: Record<string, string> } | null>(null);
   const [showModelMenu, setShowModelMenu] = useState(false);
   const [contextInvalid, setContextInvalid] = useState(false);
+  const [videoTranscribeProgress, setVideoTranscribeProgress] = useState<VideoTranscribeProgress | null>(null);
+  const [showDurationPicker, setShowDurationPicker] = useState(false);
+  const videoAbortRef = useRef<AbortController | null>(null);
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -198,6 +202,13 @@ export default function Sidebar() {
   // ─── Streaming AI Request ───
   const sendMessage = useCallback((action: string, userLabel: string, extra?: Record<string, string>) => {
     if (loading) return;
+
+    // Video transcription is handled separately — show duration picker
+    if (action === 'VIDEO_TRANSCRIBE') {
+      setShowDurationPicker(true);
+      setIsOpen(true);
+      return;
+    }
 
     // Capture file state atomically before clearing
     const currentFileText = attachedFileText;
@@ -374,6 +385,43 @@ export default function Sidebar() {
     });
     setTimeout(() => sendMessage(lastRequest.action, lastRequest.label, lastRequest.extra), 50);
   }, [lastRequest, sendMessage]);
+
+  // ─── Video Transcription ───
+  const handleVideoTranscribe = useCallback(async (durationSec: number) => {
+    setShowDurationPicker(false);
+    if (!isExtensionContextValid()) { setContextInvalid(true); return; }
+
+    const abort = new AbortController();
+    videoAbortRef.current = abort;
+    setLoading(true);
+    setVideoTranscribeProgress({ stage: 'detecting', message: 'Looking for video on this page…' });
+
+    const title = getVideoSourceTitle();
+    setMessages(prev => [...prev, { role: 'user', content: `🎬 Transcribe video: "${title}" (${durationSec}s)` }]);
+
+    try {
+      const { base64, mimeType, durationSec: actual } = await captureVideoAudio(
+        durationSec * 1000,
+        p => setVideoTranscribeProgress(p),
+        abort.signal,
+      );
+
+      const result = await transcribeVideoAudio(base64, mimeType, actual, p => setVideoTranscribeProgress(p));
+
+      const output = `## 📝 Transcript — "${result.title}"\n\n*Captured ${result.durationSec}s · transcribed by ${result.source === 'gemini' ? 'Gemini' : 'OpenAI Whisper'}*\n\n${result.transcript}`;
+      setMessages(prev => [...prev, { role: 'ai', content: output }]);
+      if (conversationId) appendMessage(conversationId, 'ai', output, 'VIDEO_TRANSCRIBE').catch(() => {});
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      if (msg !== 'Cancelled') {
+        setMessages(prev => [...prev, { role: 'ai', content: `❌ ${msg}` }]);
+      }
+    } finally {
+      setVideoTranscribeProgress(null);
+      setLoading(false);
+      videoAbortRef.current = null;
+    }
+  }, [conversationId, isExtensionContextValid]);
 
   // ─── Audio Dictation ───
   const toggleRecording = useCallback(async () => {
@@ -733,6 +781,54 @@ export default function Sidebar() {
           {isYT && (
             <div className="omni-yt-badge">
               <Youtube size={14} /> YouTube detected — video context enabled
+            </div>
+          )}
+
+          {/* Duration Picker — shown when VIDEO_TRANSCRIBE macro is clicked */}
+          {showDurationPicker && !loading && (
+            <div style={{ padding: '10px 16px', background: 'rgba(239,68,68,0.08)', borderBottom: '1px solid rgba(239,68,68,0.2)', flexShrink: 0 }}>
+              <div style={{ fontSize: '11px', fontWeight: 700, color: '#f87171', marginBottom: '8px' }}>🎬 How long to capture?</div>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                {[30, 120, 300, 600].map(sec => (
+                  <button
+                    key={sec}
+                    onClick={() => handleVideoTranscribe(sec)}
+                    style={{ padding: '5px 12px', borderRadius: '8px', border: '1px solid rgba(239,68,68,0.3)', background: 'rgba(239,68,68,0.15)', color: '#f87171', fontSize: '11px', fontWeight: 600, cursor: 'pointer' }}
+                  >
+                    {sec < 60 ? `${sec}s` : `${sec / 60} min`}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setShowDurationPicker(false)}
+                  style={{ padding: '5px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#64748b', fontSize: '11px', cursor: 'pointer', marginLeft: 'auto' }}
+                >
+                  Cancel
+                </button>
+              </div>
+              <div style={{ fontSize: '10px', color: '#64748b', marginTop: '6px' }}>Make sure the video is playing before capturing. Works on YouTube, Vimeo, and most sites.</div>
+            </div>
+          )}
+
+          {/* Video Transcription Progress */}
+          {videoTranscribeProgress && (
+            <div style={{ padding: '10px 16px', background: 'rgba(239,68,68,0.08)', borderBottom: '1px solid rgba(239,68,68,0.2)', flexShrink: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                <div style={{ fontSize: '11px', fontWeight: 600, color: '#f87171' }}>{videoTranscribeProgress.message}</div>
+                {videoTranscribeProgress.stage === 'recording' && (
+                  <button
+                    onClick={() => videoAbortRef.current?.abort()}
+                    style={{ background: 'none', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '6px', color: '#f87171', fontSize: '10px', fontWeight: 600, cursor: 'pointer', padding: '2px 8px' }}
+                  >
+                    Stop early
+                  </button>
+                )}
+              </div>
+              {videoTranscribeProgress.stage === 'recording' && videoTranscribeProgress.secondsRemaining !== undefined && (
+                <div style={{ background: 'rgba(255,255,255,0.1)', borderRadius: '4px', height: '4px', overflow: 'hidden' }}>
+                  <div style={{ height: '100%', background: 'linear-gradient(90deg, #ef4444, #f87171)', transition: 'width 0.5s linear', borderRadius: '4px',
+                    width: `${100 - (videoTranscribeProgress.secondsRemaining / (videoTranscribeProgress.secondsRemaining + 1)) * 100}%` }} />
+                </div>
+              )}
             </div>
           )}
 

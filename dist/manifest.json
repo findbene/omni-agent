@@ -49,7 +49,7 @@
   "content_scripts": [
     {
       "js": [
-        "assets/index.tsx-loader-Do7PNW_b.js"
+        "assets/index.tsx-loader-BtcZwuLL.js"
       ],
       "matches": [
         "<all_urls>"
@@ -67,7 +67,7 @@
         "assets/pdf.worker-xSiVJ7U_.mjs",
         "assets/storage-Bs21KXQ2.js",
         "assets/providers-D-5k4Gey.js",
-        "assets/index.tsx-t7nY7p4R.js"
+        "assets/index.tsx-PryV4U3K.js"
       ],
       "use_dynamic_url": false
     }

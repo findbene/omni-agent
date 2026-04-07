@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Database, PenTool, Globe, Code2, RefreshCw, Mic, Square, Zap, Search, AlignLeft, HelpCircle, DollarSign, SpellCheck2 } from 'lucide-react';
+import { Sparkles, Database, PenTool, Globe, Code2, RefreshCw, Mic, Square, Zap, Search, AlignLeft, HelpCircle, DollarSign, SpellCheck2, Clapperboard } from 'lucide-react';
 
 export interface MacroAction {
   action: string;
@@ -36,6 +36,7 @@ const MACROS: MacroDef[] = [
   { action: 'GENERATE_QUIZ', label: 'Quiz Me', icon: <HelpCircle size={13} />, color: 'rgba(139,92,246,0.12)', title: 'Generate a quiz from this page content' },
   { action: 'DEEP_RESEARCH', label: 'Research', icon: <Search size={13} />, color: 'rgba(6,182,212,0.15)', title: 'Deep multi-source research on this topic' },
   { action: 'AUTOMATE_PAGE', label: 'Automate', icon: <Zap size={13} fill="currentColor" />, color: 'rgba(234,179,8,0.15)', title: 'Generate and run automation on this page' },
+  { action: 'VIDEO_TRANSCRIBE', label: 'Transcribe', icon: <Clapperboard size={13} />, color: 'rgba(239,68,68,0.12)', title: 'Transcribe any playing video — YouTube, Vimeo, or any site' },
 ];
 
 export default function MacroBar({ onMacro, disabled, isRecording, onToggleRecording }: MacroBarProps) {

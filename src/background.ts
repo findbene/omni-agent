@@ -301,6 +301,66 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
     return true; // Keep channel open for async
   }
 
+  // ── Video Transcription ──
+  if (request.type === 'TRANSCRIBE_VIDEO') {
+    (async () => {
+      try {
+        const data = await chrome.storage.local.get(['geminiApiKey', 'openaiApiKey']);
+        const { base64, mimeType, durationSec } = request;
+        const prompt = `You are a professional transcription service. The following audio is ${durationSec} seconds of video content. Produce a clean, accurate transcript. Include speaker labels (Speaker 1, Speaker 2, etc.) if multiple distinct speakers are detected. Format naturally with paragraphs. Output only the transcript text — no preamble, no commentary.`;
+
+        // Try Gemini first (supports audio inline natively)
+        if (data.geminiApiKey) {
+          const ai = new GoogleGenAI({ apiKey: data.geminiApiKey });
+          const res = await ai.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: [{
+              role: 'user',
+              parts: [
+                { text: prompt },
+                { inlineData: { data: base64, mimeType: mimeType || 'audio/webm' } },
+              ]
+            }]
+          });
+          sendResponse({ transcript: res.text, source: 'gemini' });
+          return;
+        }
+
+        // Fall back to OpenAI Whisper
+        if (data.openaiApiKey) {
+          // Reconstruct blob from base64 and send as multipart form
+          const byteString = atob(base64);
+          const byteArray = new Uint8Array(byteString.length);
+          for (let i = 0; i < byteString.length; i++) byteArray[i] = byteString.charCodeAt(i);
+          const audioBlob = new Blob([byteArray], { type: mimeType || 'audio/webm' });
+
+          const form = new FormData();
+          form.append('file', audioBlob, 'audio.webm');
+          form.append('model', 'whisper-1');
+          form.append('response_format', 'text');
+
+          const res = await fetch('https://api.openai.com/v1/audio/transcriptions', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${data.openaiApiKey}` },
+            body: form,
+          });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error((err as { error?: { message?: string } }).error?.message || `Whisper API error ${res.status}`);
+          }
+          const transcript = await res.text();
+          sendResponse({ transcript, source: 'whisper' });
+          return;
+        }
+
+        throw new Error('No API key configured. Add a Gemini or OpenAI key in Options to use video transcription.');
+      } catch (e: unknown) {
+        sendResponse({ error: e instanceof Error ? e.message : String(e) });
+      }
+    })();
+    return true;
+  }
+
   // ── Screenshot Capture ──
   if (request.type === 'CAPTURE_SCREENSHOT') {
     (async () => {
