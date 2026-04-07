@@ -158,14 +158,6 @@
   box-shadow: 0 12px 32px rgba(91,94,246,0.5);
 }
 
-.omni-fab.expanded {
-  animation: none;
-}
-
-.omni-fab.expanded svg {
-  transform: rotate(45deg);
-}
-
 /* ── FAB Satellite Buttons ── */
 .omni-fab-satellite {
   position: absolute;
@@ -181,21 +173,22 @@
   justify-content: center;
   transform: translate(var(--sat-x, 0), var(--sat-y, 0)) scale(0);
   opacity: 0;
-  transition: transform 300ms var(--omni-ease), opacity 250ms ease;
+  transition: transform 300ms var(--omni-ease), opacity 250ms ease, background 150ms ease, color 150ms ease, border-color 150ms ease;
   box-shadow: 0 4px 16px rgba(0,0,0,0.4);
   pointer-events: none;
 }
 
-.omni-fab.expanded .omni-fab-satellite {
+/* Satellites appear on hover of the FAB container */
+.omni-fab-container:hover .omni-fab-satellite {
   transform: translate(var(--sat-x, 0), var(--sat-y, 0)) scale(1);
   opacity: 1;
   pointer-events: auto;
 }
 
-.omni-fab.expanded .omni-fab-satellite:nth-child(1) { transition-delay: 0ms; }
-.omni-fab.expanded .omni-fab-satellite:nth-child(2) { transition-delay: 40ms; }
-.omni-fab.expanded .omni-fab-satellite:nth-child(3) { transition-delay: 80ms; }
-.omni-fab.expanded .omni-fab-satellite:nth-child(4) { transition-delay: 120ms; }
+.omni-fab-container:hover .omni-fab-satellite:nth-child(1) { transition-delay: 0ms; }
+.omni-fab-container:hover .omni-fab-satellite:nth-child(2) { transition-delay: 40ms; }
+.omni-fab-container:hover .omni-fab-satellite:nth-child(3) { transition-delay: 80ms; }
+.omni-fab-container:hover .omni-fab-satellite:nth-child(4) { transition-delay: 120ms; }
 
 .omni-fab-satellite:hover {
   background: rgba(91,94,246,0.15);

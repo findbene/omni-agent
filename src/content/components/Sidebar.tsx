@@ -645,25 +645,20 @@ export default function Sidebar() {
       {/* Selection Toolbar (always mounted, shows on selection) */}
       <SelectionToolbar onAction={handleSelectionAction} />
 
-      {/* Floating Action Button — expandable with satellites */}
+      {/* Floating Action Button — hover reveals satellites, click opens sidebar */}
       {!isOpen && (
-        <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 2147483645 }}>
+        <div className="omni-fab-container" style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 2147483645 }}>
           <button
-            className={`omni-fab${fabExpanded ? ' expanded' : ''}`}
+            className="omni-fab"
             onClick={() => {
               if (contextInvalid) { window.location.reload(); return; }
-              if (fabExpanded) {
-                setFabExpanded(false);
-                setIsOpen(true);
-              } else {
-                setFabExpanded(true);
-              }
+              setIsOpen(true);
             }}
             aria-label={contextInvalid ? 'Extension updated — click to reload page' : 'Open Omni-Agent'}
             title={contextInvalid ? 'Extension updated. Click to reload the page.' : 'Open Omni-Agent'}
             style={contextInvalid ? { background: 'linear-gradient(135deg, #ef4444, #dc2626)', animation: 'none' } : undefined}
           >
-            {contextInvalid ? '↻' : fabExpanded ? <X size={20} /> : <Sparkles size={20} />}
+            {contextInvalid ? '↻' : <Sparkles size={20} />}
 
             {/* Satellite: Screenshot */}
             <button
