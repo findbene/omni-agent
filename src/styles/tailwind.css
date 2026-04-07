@@ -130,10 +130,20 @@
 .omni-fab-container {
   cursor: grab;
   user-select: none;
+  position: relative;
 }
 
 .omni-fab-container:active {
   cursor: grabbing;
+}
+
+/* Large invisible hover zone so moving cursor to a satellite doesn't break hover */
+.omni-fab-container::before {
+  content: '';
+  position: absolute;
+  inset: -88px;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .omni-fab {

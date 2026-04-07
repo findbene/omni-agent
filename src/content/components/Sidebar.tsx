@@ -116,14 +116,14 @@ export default function Sidebar() {
   // ─── Draggable FAB pointer handler ───
   const handleFabPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     if (e.button !== 0) return;
+    // Don't intercept clicks that originate on a satellite button
+    if ((e.target as Element).closest('.omni-fab-satellite')) return;
+
     const startX = e.clientX;
     const startY = e.clientY;
     const originX = fabPosRef.current.x;
     const originY = fabPosRef.current.y;
     fabWasDragged.current = false;
-
-    // Capture so we keep getting events even if pointer leaves the element
-    (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
 
     const onMove = (ev: PointerEvent) => {
       const dx = ev.clientX - startX;
@@ -142,7 +142,6 @@ export default function Sidebar() {
       document.removeEventListener('pointermove', onMove);
       document.removeEventListener('pointerup', onUp);
       if (fabWasDragged.current) {
-        // Persist new position
         safeStorageSet({ fabPosition: fabPosRef.current });
       }
     };
