@@ -78,6 +78,19 @@ export default function Sidebar() {
   const fabPosRef = useRef(fabPos);
   const fabWasDragged = useRef(false);
 
+  // Satellite visibility — JS-controlled with a hide delay so cursor can move to a satellite
+  const [satVisible, setSatVisible] = useState(false);
+  const satTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const onSatEnter = useCallback(() => {
+    if (satTimerRef.current) clearTimeout(satTimerRef.current);
+    setSatVisible(true);
+  }, []);
+
+  const onSatLeave = useCallback(() => {
+    satTimerRef.current = setTimeout(() => setSatVisible(false), 250);
+  }, []);
+
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -708,9 +721,11 @@ export default function Sidebar() {
       {/* Floating Action Button — draggable, hover reveals satellites, click opens sidebar */}
       {!isOpen && (
         <div
-          className="omni-fab-container"
+          className={`omni-fab-container${satVisible ? ' sat-visible' : ''}`}
           style={{ position: 'fixed', left: fabPos.x, top: fabPos.y, zIndex: 2147483645, touchAction: 'none' }}
           onPointerDown={handleFabPointerDown}
+          onMouseEnter={onSatEnter}
+          onMouseLeave={onSatLeave}
         >
           <button
             className="omni-fab"
@@ -729,9 +744,11 @@ export default function Sidebar() {
             <button
               className="omni-fab-satellite"
               style={{ '--sat-x': '-60px', '--sat-y': '-60px' } as React.CSSProperties}
+              onMouseEnter={onSatEnter}
+              onMouseLeave={onSatLeave}
               onClick={(e) => {
                 e.stopPropagation();
-                setFabExpanded(false);
+                setSatVisible(false);
                 setIsOpen(true);
                 setTimeout(() => handleScreenshot(), 100);
               }}
@@ -745,9 +762,11 @@ export default function Sidebar() {
             <button
               className="omni-fab-satellite"
               style={{ '--sat-x': '0px', '--sat-y': '-76px' } as React.CSSProperties}
+              onMouseEnter={onSatEnter}
+              onMouseLeave={onSatLeave}
               onClick={(e) => {
                 e.stopPropagation();
-                setFabExpanded(false);
+                setSatVisible(false);
                 toggleRecording();
               }}
               title={isRecording ? 'Stop recording' : 'Record voice'}
@@ -760,9 +779,11 @@ export default function Sidebar() {
             <button
               className="omni-fab-satellite"
               style={{ '--sat-x': '-76px', '--sat-y': '0px' } as React.CSSProperties}
+              onMouseEnter={onSatEnter}
+              onMouseLeave={onSatLeave}
               onClick={(e) => {
                 e.stopPropagation();
-                setFabExpanded(false);
+                setSatVisible(false);
                 setIsOpen(true);
                 setTimeout(() => sendMessage('VIDEO_TRANSCRIBE', 'Transcribe'), 100);
               }}
@@ -776,9 +797,11 @@ export default function Sidebar() {
             <button
               className="omni-fab-satellite"
               style={{ '--sat-x': '-60px', '--sat-y': '60px' } as React.CSSProperties}
+              onMouseEnter={onSatEnter}
+              onMouseLeave={onSatLeave}
               onClick={(e) => {
                 e.stopPropagation();
-                setFabExpanded(false);
+                setSatVisible(false);
                 setIsOpen(true);
                 setTimeout(() => startNewChat(), 100);
               }}

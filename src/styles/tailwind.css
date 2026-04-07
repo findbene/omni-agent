@@ -137,15 +137,6 @@
   cursor: grabbing;
 }
 
-/* Large invisible hover zone so moving cursor to a satellite doesn't break hover */
-.omni-fab-container::before {
-  content: '';
-  position: absolute;
-  inset: -88px;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
 .omni-fab {
   width: 52px;
   height: 52px;
@@ -194,17 +185,17 @@
   pointer-events: none;
 }
 
-/* Satellites appear on hover of the FAB container */
-.omni-fab-container:hover .omni-fab-satellite {
+/* Satellites appear when JS sets .sat-visible on the container */
+.omni-fab-container.sat-visible .omni-fab-satellite {
   transform: translate(var(--sat-x, 0), var(--sat-y, 0)) scale(1);
   opacity: 1;
   pointer-events: auto;
 }
 
-.omni-fab-container:hover .omni-fab-satellite:nth-child(1) { transition-delay: 0ms; }
-.omni-fab-container:hover .omni-fab-satellite:nth-child(2) { transition-delay: 40ms; }
-.omni-fab-container:hover .omni-fab-satellite:nth-child(3) { transition-delay: 80ms; }
-.omni-fab-container:hover .omni-fab-satellite:nth-child(4) { transition-delay: 120ms; }
+.omni-fab-container.sat-visible .omni-fab-satellite:nth-child(1) { transition-delay: 0ms; }
+.omni-fab-container.sat-visible .omni-fab-satellite:nth-child(2) { transition-delay: 40ms; }
+.omni-fab-container.sat-visible .omni-fab-satellite:nth-child(3) { transition-delay: 80ms; }
+.omni-fab-container.sat-visible .omni-fab-satellite:nth-child(4) { transition-delay: 120ms; }
 
 .omni-fab-satellite:hover {
   background: rgba(91,94,246,0.15);
@@ -232,7 +223,6 @@
   z-index: 2147483646;
   pointer-events: auto;
   animation: slideInRight 280ms var(--omni-ease);
-  position: relative;
 }
 
 /* Ambient streaming glow strip */
