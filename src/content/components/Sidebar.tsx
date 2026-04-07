@@ -561,7 +561,15 @@ export default function Sidebar() {
               }
             }, 30000);
 
-            chrome.runtime.sendMessage({ type: 'TRANSCRIBE_AUDIO', base64: base64Data, mimeType: 'audio/webm' }, (response) => {
+            if (!isExtensionContextValid()) {
+              clearTimeout(timeout);
+              setLoading(false);
+              setMessages(prev => prev.filter(m => m.content !== '🎙️ Processing audio...'));
+              setMessages(prev => [...prev, { role: 'ai', content: '🚨 Extension updated. Please refresh the page (F5).' }]);
+              setContextInvalid(true);
+              return;
+            }
+            try { chrome.runtime.sendMessage({ type: 'TRANSCRIBE_AUDIO', base64: base64Data, mimeType: 'audio/webm' }, (response) => {
               if (responded) return;
               responded = true;
               clearTimeout(timeout);
@@ -587,7 +595,7 @@ export default function Sidebar() {
                   });
                 }
               }
-            });
+            }); } catch { /* context invalidated — global handler in index.tsx will catch */ }
           };
           reader.readAsDataURL(audioBlob);
         };

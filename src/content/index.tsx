@@ -9,6 +9,24 @@ import styleText from '../styles/tailwind.css?inline';
 
 const HOST_ID = 'omni-agent-host';
 
+// ── Global guard: silently swallow "Extension context invalidated" errors ──
+// These fire when the extension is reloaded but old content scripts are still
+// alive in open tabs. Without this handler they appear as uncaught console errors.
+function isContextError(msg: string) {
+  return msg.includes('Extension context invalidated') ||
+         msg.includes('Extension context was invalidated');
+}
+window.addEventListener('error', (e) => {
+  if (e?.message && isContextError(e.message)) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  }
+}, true);
+window.addEventListener('unhandledrejection', (e) => {
+  const msg: string = e?.reason?.message ?? String(e?.reason ?? '');
+  if (isContextError(msg)) e.preventDefault();
+});
+
 function mountUI() {
   if (document.getElementById(HOST_ID)) return;
 
