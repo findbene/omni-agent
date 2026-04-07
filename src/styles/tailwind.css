@@ -127,10 +127,16 @@
 /*  FLOATING ACTION BUTTON                                     */
 /* ═══════════════════════════════════════════════════════════ */
 
+.omni-fab-container {
+  cursor: grab;
+  user-select: none;
+}
+
+.omni-fab-container:active {
+  cursor: grabbing;
+}
+
 .omni-fab {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -143,9 +149,9 @@
   justify-content: center;
   animation: fabIdle 3s ease-in-out infinite;
   box-shadow: 0 8px 24px var(--omni-accent-glow);
-  z-index: 2147483645;
   transition: transform 220ms var(--omni-ease);
   pointer-events: auto;
+  position: relative;
 }
 
 .omni-fab svg {

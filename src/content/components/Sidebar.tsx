@@ -73,6 +73,11 @@ export default function Sidebar() {
   const [toastVisible, setToastVisible] = useState(false);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Draggable FAB position (bottom-right default)
+  const [fabPos, setFabPos] = useState({ x: window.innerWidth - 76, y: window.innerHeight - 76 });
+  const fabPosRef = useRef(fabPos);
+  const fabWasDragged = useRef(false);
+
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -88,6 +93,62 @@ export default function Sidebar() {
     setToastMsg(msg);
     setToastVisible(true);
     toastTimerRef.current = setTimeout(() => setToastVisible(false), 2500);
+  }, []);
+
+  // ─── Load persisted FAB position ───
+  useEffect(() => {
+    try {
+      chrome.storage.local.get('fabPosition', (res) => {
+        if (res.fabPosition) {
+          const pos = res.fabPosition as { x: number; y: number };
+          // Clamp to current viewport in case screen size changed
+          const clamped = {
+            x: Math.max(0, Math.min(window.innerWidth - 56, pos.x)),
+            y: Math.max(0, Math.min(window.innerHeight - 56, pos.y)),
+          };
+          setFabPos(clamped);
+          fabPosRef.current = clamped;
+        }
+      });
+    } catch { /* extension context not ready yet */ }
+  }, []);
+
+  // ─── Draggable FAB pointer handler ───
+  const handleFabPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return;
+    const startX = e.clientX;
+    const startY = e.clientY;
+    const originX = fabPosRef.current.x;
+    const originY = fabPosRef.current.y;
+    fabWasDragged.current = false;
+
+    // Capture so we keep getting events even if pointer leaves the element
+    (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+
+    const onMove = (ev: PointerEvent) => {
+      const dx = ev.clientX - startX;
+      const dy = ev.clientY - startY;
+      if (!fabWasDragged.current && Math.hypot(dx, dy) < 6) return;
+      fabWasDragged.current = true;
+      const newPos = {
+        x: Math.max(0, Math.min(window.innerWidth - 56, originX + dx)),
+        y: Math.max(0, Math.min(window.innerHeight - 56, originY + dy)),
+      };
+      setFabPos(newPos);
+      fabPosRef.current = newPos;
+    };
+
+    const onUp = () => {
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerup', onUp);
+      if (fabWasDragged.current) {
+        // Persist new position
+        safeStorageSet({ fabPosition: fabPosRef.current });
+      }
+    };
+
+    document.addEventListener('pointermove', onMove);
+    document.addEventListener('pointerup', onUp);
   }, []);
 
   // Auto-scroll
@@ -645,12 +706,17 @@ export default function Sidebar() {
       {/* Selection Toolbar (always mounted, shows on selection) */}
       <SelectionToolbar onAction={handleSelectionAction} />
 
-      {/* Floating Action Button — hover reveals satellites, click opens sidebar */}
+      {/* Floating Action Button — draggable, hover reveals satellites, click opens sidebar */}
       {!isOpen && (
-        <div className="omni-fab-container" style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 2147483645 }}>
+        <div
+          className="omni-fab-container"
+          style={{ position: 'fixed', left: fabPos.x, top: fabPos.y, zIndex: 2147483645, touchAction: 'none' }}
+          onPointerDown={handleFabPointerDown}
+        >
           <button
             className="omni-fab"
             onClick={() => {
+              if (fabWasDragged.current) return; // ignore click if we just dragged
               if (contextInvalid) { window.location.reload(); return; }
               setIsOpen(true);
             }}
