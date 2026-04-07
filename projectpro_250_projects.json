@@ -1,0 +1,2112 @@
+[
+  {
+    "title": "Build a Multimodal RAG System using AWS Bedrock and FAISS",
+    "description": "Learn to build a Multimodal RAG system for a restaurant aggregator app, integrating text and visuals using Amazon S3, Amazon Bedrock, and FAISS.",
+    "skills": [
+      "AWS Bedrock",
+      "FAISS",
+      "Amazon S3",
+      "Python",
+      "LLM",
+      "RAG"
+    ]
+  },
+  {
+    "title": "CI/CD Deployment of Gaussian Process Time Series Models",
+    "description": "Build an automated, end-to-end MLOps pipeline to deploy a Gaussian Process Time Series forecasting model on AWS using Terraform.",
+    "skills": [
+      "AWS",
+      "Terraform",
+      "Time Series",
+      "MLOps",
+      "CI/CD"
+    ]
+  },
+  {
+    "title": "End-to-End Snowflake Healthcare Analytics Project on AWS-2",
+    "description": "Build an end-to-end retraining pipeline by checking Data and Model Drift and learn how to redeploy the model if needed.",
+    "skills": [
+      "Snowflake",
+      "AWS",
+      "Healthcare Analytics",
+      "Model Drift",
+      "MLOps"
+    ]
+  },
+  {
+    "title": "Build an AI Chatbot from Scratch using Keras Sequential Model",
+    "description": "Learn how to build an AI Chatbot from Scratch using Keras Sequential Model for natural language processing.",
+    "skills": [
+      "Keras",
+      "Python",
+      "NLP",
+      "Deep Learning",
+      "Chatbot"
+    ]
+  },
+  {
+    "title": "AI Video Summarization Project using Mixtral, Whisper, and AWS",
+    "description": "Build a quiz generation tool by extracting key concepts from educational videos and generating concise summaries.",
+    "skills": [
+      "Mixtral",
+      "Whisper",
+      "AWS",
+      "GenAI",
+      "Summarization"
+    ]
+  },
+  {
+    "title": "Build a Wealth Management Agentic AI Chatbot with MS Fabric",
+    "description": "Build an intelligent financial assistant that autonomously analyzes financial data, assesses risks, and designs personalized investment strategies.",
+    "skills": [
+      "Microsoft Fabric",
+      "Agentic AI",
+      "Finance",
+      "GenAI"
+    ]
+  },
+  {
+    "title": "Build a Refund Request AI Agent using LangGraph and FAISS",
+    "description": "Build an AI agent that handles refund requests by analyzing customer data and policies using LangGraph and FAISS.",
+    "skills": [
+      "LangGraph",
+      "FAISS",
+      "Python",
+      "AI Agent"
+    ]
+  },
+  {
+    "title": "Build Multi Class Text Classification Models with RNN and LSTM",
+    "description": "Learn to classify text into multiple categories using Recurrent Neural Networks and Long Short-Term Memory networks.",
+    "skills": [
+      "RNN",
+      "LSTM",
+      "Deep Learning",
+      "NLP"
+    ]
+  },
+  {
+    "title": "Build an AI Quiz Generator from Video with OpenAI API",
+    "description": "Extract key concepts from educational videos and generate quiz questions automatically using OpenAI APIs.",
+    "skills": [
+      "OpenAI API",
+      "Python",
+      "Video Processing",
+      "NLP"
+    ]
+  },
+  {
+    "title": "Build a Multi Class Text Classification Model using Naive Bayes",
+    "description": "Implement a Naive Bayes classifier for multi-class text categorization tasks in Python.",
+    "skills": [
+      "Naive Bayes",
+      "Machine Learning",
+      "Python",
+      "NLP"
+    ]
+  },
+  {
+    "title": "NLP Project to Build a Resume Parser in Python using Spacy",
+    "description": "Use the Spacy library for Named Entity Recognition and text classification to build an automated resume parsing system.",
+    "skills": [
+      "Spacy",
+      "Python",
+      "NLP",
+      "OCR"
+    ]
+  },
+  {
+    "title": "Text Classification with Transformers-RoBERTa and XLNet Model",
+    "description": "Fine-tune and evaluate RoBERTa and XLNet transformer models for advanced text classification tasks.",
+    "skills": [
+      "Transformers",
+      "RoBERTa",
+      "XLNet",
+      "PyTorch"
+    ]
+  },
+  {
+    "title": "NLP Project for Multi Class Text Classification using BERT Model",
+    "description": "Build and evaluate a BERT-based model for text classification in a multi-class setting.",
+    "skills": [
+      "BERT",
+      "NLP",
+      "Deep Learning",
+      "Python"
+    ]
+  },
+  {
+    "title": "Build a Text Classification Model with Attention Mechanism NLP",
+    "description": "Incorporate attention mechanisms into neural networks for improved text classification performance.",
+    "skills": [
+      "Attention Mechanism",
+      "Deep Learning",
+      "NLP",
+      "TensorFlow"
+    ]
+  },
+  {
+    "title": "Skip Gram Model Python Implementation for Word Embeddings",
+    "description": "Learn how to implement the skip-gram algorithm from scratch for creating word embeddings.",
+    "skills": [
+      "Skip-Gram",
+      "Word2Vec",
+      "NLP",
+      "Python"
+    ]
+  },
+  {
+    "title": "Microsoft Fabric Project to Build a Financial Reporting Agent",
+    "description": "Automate financial data management and reporting using Microsoft Fabric and Agentic AI.",
+    "skills": [
+      "Microsoft Fabric",
+      "Reporting",
+      "Finance",
+      "AI Agent"
+    ]
+  },
+  {
+    "title": "Build a Financial Data Pipeline using AWS and PySpark",
+    "description": "Collect currency ticker data and transform it using PySpark on AWS EMR, then load it to Athena.",
+    "skills": [
+      "AWS EMR",
+      "PySpark",
+      "Athena",
+      "Glue",
+      "Big Data"
+    ]
+  },
+  {
+    "title": "Build a real-time Streaming Data Pipeline using Flink and Kinesis",
+    "description": "Develop an Apache Flink application to process real-time streaming data from Amazon Kinesis.",
+    "skills": [
+      "Apache Flink",
+      "Amazon Kinesis",
+      "AWS",
+      "Streaming",
+      "Big Data"
+    ]
+  },
+  {
+    "title": "Hands-On Real Time PySpark Project for Beginners",
+    "description": "Learn fundamental Spark concepts like Spark Sessions, Transformations, and Actions using PySpark to process real-world data.",
+    "skills": [
+      "PySpark",
+      "Spark",
+      "Data Transformation",
+      "Big Data"
+    ]
+  },
+  {
+    "title": "Analyse Yelp Dataset with Spark & Parquet Format on Azure Databricks",
+    "description": "Use Azure Databricks and Spark to analyze large datasets in Parquet format, including ADF for orchestration.",
+    "skills": [
+      "Azure Databricks",
+      "ADF",
+      "Spark",
+      "Parquet",
+      "Big Data"
+    ]
+  },
+  {
+    "title": "PySpark Tutorial - Learn to use Apache Spark with Python",
+    "description": "Comprehensive tutorial on using Python with Spark for various data processing tasks.",
+    "skills": [
+      "PySpark",
+      "Apache Spark",
+      "Python",
+      "Data Processing"
+    ]
+  },
+  {
+    "title": "PySpark Project-Build a Data Pipeline using Hive and Cassandra",
+    "description": "Design an ETL pipeline that integrates Hive and Cassandra for large-scale data storage and analysis.",
+    "skills": [
+      "PySpark",
+      "Hive",
+      "Cassandra",
+      "Big Data",
+      "ETL"
+    ]
+  },
+  {
+    "title": "Stock Market Prediction using LSTMs and Sentiment Analysis",
+    "description": "Combine historical stock data with news sentiment to predict stock prices using Long Short-Term Memory networks.",
+    "skills": [
+      "LSTM",
+      "Sentiment Analysis",
+      "Python",
+      "Deep Learning"
+    ]
+  },
+  {
+    "title": "E-commerce Recommender System using Collaborative Filtering",
+    "description": "Build a recommendation engine for an e-commerce site using user-product interaction data and collaborative filtering.",
+    "skills": [
+      "Recommender System",
+      "Collaborative Filtering",
+      "Python",
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Customer Churn Prediction for Telecom Industry",
+    "description": "Analyze customer usage patterns and predict which customers are likely to cancel their subscriptions.",
+    "skills": [
+      "Churn Prediction",
+      "Classification",
+      "Python",
+      "Scikit-Learn"
+    ]
+  },
+  {
+    "title": "House Price Prediction using Linear Regression and Random Forest",
+    "description": "Build a machine learning model to predict real estate prices based on various features such as location, size, and amenities.",
+    "skills": [
+      "Linear Regression",
+      "Random Forest",
+      "Scikit-Learn",
+      "Python",
+      "EDA"
+    ]
+  },
+  {
+    "title": "Fake News Detection using NLP and Naive Bayes",
+    "description": "Develop a system to classify news articles as real or fake based on their content using Natural Language Processing.",
+    "skills": [
+      "Naive Bayes",
+      "NLP",
+      "TF-IDF",
+      "Python",
+      "NLTK"
+    ]
+  },
+  {
+    "title": "Spam Email Classification using Support Vector Machines (SVM)",
+    "description": "Build a robust email filter that identifies spam messages using SVM and text processing techniques.",
+    "skills": [
+      "SVM",
+      "NLP",
+      "Python",
+      "Scikit-Learn"
+    ]
+  },
+  {
+    "title": "Heart Disease Prediction using Logistic Regression",
+    "description": "Predict the likelihood of heart disease in patients based on medical metrics using a logistic regression model.",
+    "skills": [
+      "Logistic Regression",
+      "Healthcare",
+      "Python",
+      "Predictive Modeling"
+    ]
+  },
+  {
+    "title": "Music Recommendation System using Spotify Dataset",
+    "description": "Create a personalized music recommendation engine using user listening history and audio features from Spotify.",
+    "skills": [
+      "Recommender System",
+      "Collaborative Filtering",
+      "Python",
+      "APIs"
+    ]
+  },
+  {
+    "title": "Credit Card Fraud Detection using Isolation Forest",
+    "description": "Identify fraudulent transactions in a highly imbalanced dataset using anomaly detection algorithms like Isolation Forest.",
+    "skills": [
+      "Anomaly Detection",
+      "Isolation Forest",
+      "Machine Learning",
+      "Finance"
+    ]
+  },
+  {
+    "title": "Sales Forecasting for Retail Stores using ARIMA",
+    "description": "Use Time Series analysis to forecast weekly sales for a chain of retail stores using historical data.",
+    "skills": [
+      "Time Series",
+      "ARIMA",
+      "Forecasting",
+      "Python"
+    ]
+  },
+  {
+    "title": "Sentiment Analysis on Twitter Data using LSTMs",
+    "description": "Analyze the sentiment of tweets in real-time using deep learning models specialized for sequence data.",
+    "skills": [
+      "LSTM",
+      "NLP",
+      "Twitter API",
+      "Deep Learning"
+    ]
+  },
+  {
+    "title": "Breast Cancer Classification using Neural Networks",
+    "description": "Build a binary classifier to distinguish between malignant and benign tumors using clinical data.",
+    "skills": [
+      "Neural Networks",
+      "Deep Learning",
+      "TensorFlow",
+      "Healthcare"
+    ]
+  },
+  {
+    "title": "Movie Recommendation System using Matrix Factorization",
+    "description": "Implement Matrix Factorization techniques like SVD to build a \u092e\u0942\u0935\u0940 recommendation system.",
+    "skills": [
+      "SVD",
+      "Matrix Factorization",
+      "Recommender Systems",
+      "Python"
+    ]
+  },
+  {
+    "title": "Car Price Prediction using XGBoost",
+    "description": "Build a high-performance regression model to estimate the resale value of used cars using the XGBoost library.",
+    "skills": [
+      "XGBoost",
+      "Regression",
+      "Python",
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Customer Segmentation using K-Means Clustering",
+    "description": "Group customers based on their purchasing behavior to help businesses target them more effectively.",
+    "skills": [
+      "K-Means",
+      "Unsupervised Learning",
+      "Python",
+      "Clustering"
+    ]
+  },
+  {
+    "title": "Handwritten Digit Recognition using MNIST Dataset",
+    "description": "The 'Hello World' of computer vision - build a model to recognize digits from 0 to 9 using CNNs.",
+    "skills": [
+      "CNN",
+      "MNIST",
+      "Computer Vision",
+      "TensorFlow"
+    ]
+  },
+  {
+    "title": "Uber Data Analysis using R",
+    "description": "Perform Exploratory Data Analysis (EDA) on Uber trip data to find patterns in ridership and peak hours.",
+    "skills": [
+      "R",
+      "EDA",
+      "Data Visualization",
+      "ggplot2"
+    ]
+  },
+  {
+    "title": "Wine Quality Prediction using Decision Trees",
+    "description": "Classify the quality of wine based on physicochemical properties using Decision Tree algorithms.",
+    "skills": [
+      "Decision Trees",
+      "Classification",
+      "Python",
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Bitcoin Price Forecasting using Prophet",
+    "description": "Apply Facebook's Prophet library to forecast the price of Bitcoin based on historical trends.",
+    "skills": [
+      "Prophet",
+      "Time Series",
+      "Forecasting",
+      "FinTech"
+    ]
+  },
+  {
+    "title": "Human Activity Recognition using Smartphone Sensors",
+    "description": "Classify activities like walking, sitting, and standing based on accelerometer and gyroscope data.",
+    "skills": [
+      "Signal Processing",
+      "Classification",
+      "Python",
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Text Summarization using BERT and Pegasus",
+    "description": "Implement state-of-the-art transformer models to generate abstractive summaries of long articles.",
+    "skills": [
+      "BERT",
+      "Pegasus",
+      "NLP",
+      "Transformers"
+    ]
+  },
+  {
+    "title": "Credit Scoring Model using Random Forest",
+    "description": "Build a credit risk model to predict the probability of default for loan applicants.",
+    "skills": [
+      "Random Forest",
+      "Credit Scoring",
+      "Finance",
+      "Scikit-Learn"
+    ]
+  },
+  {
+    "title": "Web Scraping and Sentiment Analysis on Amazon Product Reviews",
+    "description": "Scrape reviews from Amazon and analyze customer feedback to determine product sentiment.",
+    "skills": [
+      "BeautifulSoup",
+      "Web Scraping",
+      "Sentiment Analysis",
+      "NLP"
+    ]
+  },
+  {
+    "title": "Dog vs Cat Image Classification using CNN",
+    "description": "Build a deep learning model to accurately classify images of dogs and cats using Convolutional Neural Networks.",
+    "skills": [
+      "CNN",
+      "Keras",
+      "TensorFlow",
+      "Computer Vision",
+      "Python"
+    ]
+  },
+  {
+    "title": "Titanic Survival Prediction using Logistic Regression",
+    "description": "Predict which passengers survived the Titanic disaster based on features like age, gender, and class.",
+    "skills": [
+      "Logistic Regression",
+      "Titanic Dataset",
+      "Python",
+      "Data Science"
+    ]
+  },
+  {
+    "title": "Movie Recommendation System using Collaborative Filtering",
+    "description": "Build a recommendation engine for movies based on user ratings and item similarities.",
+    "skills": [
+      "Collaborative Filtering",
+      "Recommendation System",
+      "Python",
+      "Pandas"
+    ]
+  },
+  {
+    "title": "House Price Prediction using Random Forest",
+    "description": "Predict house prices using a Random Forest Regressor and perform feature engineering to improve accuracy.",
+    "skills": [
+      "Random Forest",
+      "Regression",
+      "Python",
+      "Feature Engineering"
+    ]
+  },
+  {
+    "title": "Customer Churn Prediction for a Bank",
+    "description": "Analyze banking customer data and predict the likelihood of customers leaving the bank.",
+    "skills": [
+      "Churn Prediction",
+      "Machine Learning",
+      "Python",
+      "Scikit-Learn"
+    ]
+  },
+  {
+    "title": "Handwritten Digit Recognition using MNIST",
+    "description": "Implement a simple neural network to recognize handwritten digits from the MNIST dataset.",
+    "skills": [
+      "Neural Networks",
+      "MNIST",
+      "TensorFlow",
+      "Keras"
+    ]
+  },
+  {
+    "title": "Sentiment Analysis on Movie Reviews",
+    "description": "Classify movie reviews as positive or negative using NLP techniques like bag-of-words and Naive Bayes.",
+    "skills": [
+      "NLP",
+      "Naive Bayes",
+      "Sentiment Analysis",
+      "Python"
+    ]
+  },
+  {
+    "title": "Stock Price Prediction using LSTM",
+    "description": "Use Long Short-Term Memory networks to predict future stock prices based on historical data.",
+    "skills": [
+      "LSTM",
+      "Time Series",
+      "Deep Learning",
+      "FinTech"
+    ]
+  },
+  {
+    "title": "Credit Card Fraud Detection using Anomaly Detection",
+    "description": "Identify fraudulent credit card transactions using anomaly detection algorithms like Isolation Forest.",
+    "skills": [
+      "Anomaly Detection",
+      "Isolation Forest",
+      "Fraud Detection",
+      "Python"
+    ]
+  },
+  {
+    "title": "Face Recognition using Haar Cascades",
+    "description": "Implement a face detection system using Haar Cascades and OpenCV in Python.",
+    "skills": [
+      "OpenCV",
+      "Facial Recognition",
+      "Computer Vision",
+      "Python"
+    ]
+  },
+  {
+    "title": "Wine Quality Prediction using Decision Tree",
+    "description": "Classify the quality of wine based on its chemical composition using a decision tree model.",
+    "skills": [
+      "Decision Tree",
+      "Classification",
+      "Python",
+      "Data Science"
+    ]
+  },
+  {
+    "title": "Sales Forecasting for a Retail Store",
+    "description": "Forecast future sales based on historical data using time series analysis techniques.",
+    "skills": [
+      "Time Series",
+      "Forecasting",
+      "Python",
+      "Statsmodels"
+    ]
+  },
+  {
+    "title": "Diabetes Prediction using Support Vector Machines",
+    "description": "Predict whether a patient has diabetes based on medical records using an SVM classifier.",
+    "skills": [
+      "SVM",
+      "Predictive Modeling",
+      "Healthcare",
+      "Python"
+    ]
+  },
+  {
+    "title": "Iris Flower Classification using K-Nearest Neighbors",
+    "description": "The classic iris classification project using the KNN algorithm and the Scikit-learn library.",
+    "skills": [
+      "KNN",
+      "Classification",
+      "Python",
+      "Scikit-Learn"
+    ]
+  },
+  {
+    "title": "Text Summarization using NLP",
+    "description": "Generate concise summaries of long text documents using extractive and abstractive summarization techniques.",
+    "skills": [
+      "NLP",
+      "Summarization",
+      "Python",
+      "Gensim"
+    ]
+  },
+  {
+    "title": "Object Detection using YOLO",
+    "description": "Detect objects in images and videos in real-time using the YOLO (You Only Look Once) algorithm.",
+    "skills": [
+      "YOLO",
+      "Object Detection",
+      "Computer Vision",
+      "Deep Learning"
+    ]
+  },
+  {
+    "title": "Market Basket Analysis using Apriori Algorithm",
+    "description": "Analyze customer purchase patterns to find sets of items that are frequently bought together.",
+    "skills": [
+      "Apriori Algorithm",
+      "Association Rules",
+      "Market Basket Analysis",
+      "Python"
+    ]
+  },
+  {
+    "title": "Speech Emotion Recognition using Deep Learning",
+    "description": "Identify emotions from speech signals using audio processing and convolutional neural networks.",
+    "skills": [
+      "CNN",
+      "Audio Processing",
+      "Deep Learning",
+      "Python"
+    ]
+  },
+  {
+    "title": "Plant Disease Detection using Computer Vision",
+    "description": "Develop a system to identify diseases in plants from images of their leaves using deep learning.",
+    "skills": [
+      "Computer Vision",
+      "Deep Learning",
+      "Agriculture",
+      "Keras"
+    ]
+  },
+  {
+    "title": "Big Data Pipeline using Spark and Kafka",
+    "description": "Build a real-time data processing pipeline using Apache Spark and Apache Kafka.",
+    "skills": [
+      "Apache Spark",
+      "Apache Kafka",
+      "Big Data",
+      "Streaming"
+    ]
+  },
+  {
+    "title": "Data Engineering with Hive and Hadoop",
+    "description": "Store and analyze large datasets using the Hadoop ecosystem and the Hive data warehouse.",
+    "skills": [
+      "Hadoop",
+      "Hive",
+      "Data Engineering",
+      "SQL"
+    ]
+  },
+  {
+    "title": "A/B Testing for a Website",
+    "description": "Design and analyze an A/B test to evaluate the impact of a website change on user behavior.",
+    "skills": [
+      "A/B Testing",
+      "Statistics",
+      "Python",
+      "Data Science"
+    ]
+  },
+  {
+    "title": "Natural Language Generation for Reports",
+    "description": "Automatically generate business reports from raw data using natural language generation techniques.",
+    "skills": [
+      "NLG",
+      "Report Automation",
+      "NLP",
+      "Python"
+    ]
+  },
+  {
+    "title": "Customer Lifetime Value Prediction",
+    "description": "Predict the total revenue a customer will generate.",
+    "skills": [
+      "Regression",
+      "Python"
+    ]
+  },
+  {
+    "title": "Product Bundling Analysis",
+    "description": "Recommend product bundles based on purchase data.",
+    "skills": [
+      "Association Rules"
+    ]
+  },
+  {
+    "title": "Credit Risk Modeling",
+    "description": "Estimate probability of default for loans.",
+    "skills": [
+      "Logistic Regression"
+    ]
+  },
+  {
+    "title": "Traffic Sign Recognition",
+    "description": "Identify traffic signs from images.",
+    "skills": [
+      "CNN",
+      "Computer Vision"
+    ]
+  },
+  {
+    "title": "Malaria Cell Detection",
+    "description": "Detect malaria in cell images.",
+    "skills": [
+      "Deep Learning",
+      "Healthcare"
+    ]
+  },
+  {
+    "title": "Real-time Sentiment Analysis",
+    "description": "Analyze sentiment of streaming data.",
+    "skills": [
+      "Kafka",
+      "NLP"
+    ]
+  },
+  {
+    "title": "Supply Chain Optimization",
+    "description": "Optimize routes and inventory.",
+    "skills": [
+      "Operations Research"
+    ]
+  },
+  {
+    "title": "Predictive Maintenance",
+    "description": "Predict equipment failure in advance.",
+    "skills": [
+      "Time Series"
+    ]
+  },
+  {
+    "title": "Fraud Detection in E-commerce",
+    "description": "Identify fake transactions.",
+    "skills": [
+      "Anomaly Detection"
+    ]
+  },
+  {
+    "title": "Video Classification",
+    "description": "Classify activities in short videos.",
+    "skills": [
+      "CNN",
+      "RNN"
+    ]
+  },
+  {
+    "title": "Speech to Text Converter",
+    "description": "Build a simple STT system.",
+    "skills": [
+      "NLP",
+      "Deep Learning"
+    ]
+  },
+  {
+    "title": "Language Translator",
+    "description": "Translate between two languages.",
+    "skills": [
+      "Transformers",
+      "Seq2Seq"
+    ]
+  },
+  {
+    "title": "Music Genre Classification",
+    "description": "Classify music files by genre.",
+    "skills": [
+      "Audio Processing"
+    ]
+  },
+  {
+    "title": "House Price Analysis",
+    "description": "Analyze trends in house prices.",
+    "skills": [
+      "EDA",
+      "Python"
+    ]
+  },
+  {
+    "title": "Iris Flower Species Classification",
+    "description": "Classify iris species.",
+    "skills": [
+      "Classification"
+    ]
+  },
+  {
+    "title": "Survival Analysis on Titanic",
+    "description": "Predict Titanic survivors.",
+    "skills": [
+      "Logistic Regression"
+    ]
+  },
+  {
+    "title": "Uber Trip Analysis",
+    "description": "Analyze Uber trip patterns.",
+    "skills": [
+      "EDA",
+      "Visualization"
+    ]
+  },
+  {
+    "title": "Wine Quality Prediction",
+    "description": "Predict wine quality scores.",
+    "skills": [
+      "Decision Trees"
+    ]
+  },
+  {
+    "title": "Big Data Pipeline with Spark",
+    "description": "Process TBs of data using Spark.",
+    "skills": [
+      "Apache Spark"
+    ]
+  },
+  {
+    "title": "ETL Pipeline with Hive",
+    "description": "Manage database records with Hive.",
+    "skills": [
+      "Hadoop",
+      "Hive"
+    ]
+  },
+  {
+    "title": "Real-time Dashboard with PowerBI",
+    "description": "Visualize data in real-time.",
+    "skills": [
+      "PowerBI"
+    ]
+  },
+  {
+    "title": "Tableau Sales Dashboard",
+    "description": "Build sales insights in Tableau.",
+    "skills": [
+      "Tableau"
+    ]
+  },
+  {
+    "title": "A/B Testing for Product Features",
+    "description": "Measure feature impact.",
+    "skills": [
+      "Statistics"
+    ]
+  },
+  {
+    "title": "Sentiment Analysis using VADER",
+    "description": "Quick sentiment scores using VADER.",
+    "skills": [
+      "VADER",
+      "NLP"
+    ]
+  },
+  {
+    "title": "Topic Modeling with LDA",
+    "description": "Find topics in a corpus of text.",
+    "skills": [
+      "LDA",
+      "NLP"
+    ]
+  },
+  {
+    "title": "Named Entity Recognition",
+    "description": "Extract entities from text.",
+    "skills": [
+      "NER",
+      "Spacy"
+    ]
+  },
+  {
+    "title": "Word Embedding with Gensim",
+    "description": "Train Word2Vec models.",
+    "skills": [
+      "Gensim",
+      "Word2Vec"
+    ]
+  },
+  {
+    "title": "Recommendation with SVD",
+    "description": "Recommender system using SVD.",
+    "skills": [
+      "Matrix Factorization"
+    ]
+  },
+  {
+    "title": "K-Means on Online Retail Data",
+    "description": "Segment customers by purchase.",
+    "skills": [
+      "K-Means"
+    ]
+  },
+  {
+    "title": "Clustering with DBSCAN",
+    "description": "Find density-based clusters.",
+    "skills": [
+      "DBSCAN"
+    ]
+  },
+  {
+    "title": "PCA for Dimensionality Reduction",
+    "description": "Reduce features using PCA.",
+    "skills": [
+      "PCA"
+    ]
+  },
+  {
+    "title": "XGBoost on Credit Card Data",
+    "description": "Classify fraud with XGBoost.",
+    "skills": [
+      "XGBoost"
+    ]
+  },
+  {
+    "title": "Gradient Boosting for Regression",
+    "description": "Predict house prices with GBM.",
+    "skills": [
+      "GBM"
+    ]
+  },
+  {
+    "title": "CatBoost for Categorical Data",
+    "description": "Use CatBoost for classification.",
+    "skills": [
+      "CatBoost"
+    ]
+  },
+  {
+    "title": "LightGBM on Large Datasets",
+    "description": "High performance classification.",
+    "skills": [
+      "LightGBM"
+    ]
+  },
+  {
+    "title": "Time Series with Facebook Prophet",
+    "description": "Forecast time series with Prophet.",
+    "skills": [
+      "Prophet"
+    ]
+  },
+  {
+    "title": "Forecasting with Holt-Winters",
+    "description": "Traditional time series forecasting.",
+    "skills": [
+      "Holt-Winters"
+    ]
+  },
+  {
+    "title": "Anomaly Detection with Isolation Forest",
+    "description": "Find anomalies in data.",
+    "skills": [
+      "Isolation Forest"
+    ]
+  },
+  {
+    "title": "Local Outlier Factor Analysis",
+    "description": "Identify outliers in data.",
+    "skills": [
+      "LOF"
+    ]
+  },
+  {
+    "title": "Neural Style Transfer",
+    "description": "Apply artwork style to images.",
+    "skills": [
+      "Deep Learning"
+    ]
+  },
+  {
+    "title": "Image Segmentation with U-Net",
+    "description": "Segment images with U-Net.",
+    "skills": [
+      "U-Net",
+      "CV"
+    ]
+  },
+  {
+    "title": "Autoencoders for Denoising",
+    "description": "Denoise images with autoencoders.",
+    "skills": [
+      "Autoencoders"
+    ]
+  },
+  {
+    "title": "GANs for Image Generation",
+    "description": "Generate images with GANs.",
+    "skills": [
+      "GANs"
+    ]
+  },
+  {
+    "title": "Reinforcement Learning for Games",
+    "description": "Train an agent to play games.",
+    "skills": [
+      "RL"
+    ]
+  },
+  {
+    "title": "Q-Learning for Pathfinding",
+    "description": "Find path using Q-Learning.",
+    "skills": [
+      "RL"
+    ]
+  },
+  {
+    "title": "Deep Q Networks (DQN)",
+    "description": "Deep reinforcement learning.",
+    "skills": [
+      "DQN"
+    ]
+  },
+  {
+    "title": "Web App with Streamlit",
+    "description": "Build data app with Streamlit.",
+    "skills": [
+      "Streamlit"
+    ]
+  },
+  {
+    "title": "Flask API for ML Models",
+    "description": "Deploy model using Flask.",
+    "skills": [
+      "Flask"
+    ]
+  },
+  {
+    "title": "FastAPI for Real-time App",
+    "description": "High speed API with FastAPI.",
+    "skills": [
+      "FastAPI"
+    ]
+  },
+  {
+    "title": "Dockerizing ML Models",
+    "description": "Containerize models with Docker.",
+    "skills": [
+      "Docker"
+    ]
+  },
+  {
+    "title": "Kubernetes for Model Deployment",
+    "description": "Orchestrate containers with K8s.",
+    "skills": [
+      "Kubernetes"
+    ]
+  },
+  {
+    "title": "AWS Sagemaker for Training",
+    "description": "Train models on Sagemaker.",
+    "skills": [
+      "AWS"
+    ]
+  },
+  {
+    "title": "Azure ML Services",
+    "description": "ML on Azure platform.",
+    "skills": [
+      "Azure"
+    ]
+  },
+  {
+    "title": "GCP Vertex AI",
+    "description": "Deploy on Google Cloud.",
+    "skills": [
+      "GCP"
+    ]
+  },
+  {
+    "title": "MLflow for Experiment Tracking",
+    "description": "Track models with MLflow.",
+    "skills": [
+      "MLflow"
+    ]
+  },
+  {
+    "title": "DVC for Data Versioning",
+    "description": "Version datasets with DVC.",
+    "skills": [
+      "DVC"
+    ]
+  },
+  {
+    "title": "Airflow for Workflows",
+    "description": "Schedule pipelines with Airflow.",
+    "skills": [
+      "Airflow"
+    ]
+  },
+  {
+    "title": "Prefect for Data Ops",
+    "description": "Modern data orchestration.",
+    "skills": [
+      "Prefect"
+    ]
+  },
+  {
+    "title": "Spark Streaming on Kafka",
+    "description": "Process Kafka streams with Spark.",
+    "skills": [
+      "Spark",
+      "Kafka"
+    ]
+  },
+  {
+    "title": "PySpark on Google Colab",
+    "description": "Learn PySpark on Colab.",
+    "skills": [
+      "PySpark"
+    ]
+  },
+  {
+    "title": "SQL for Data Science",
+    "description": "Advanced SQL queries for data.",
+    "skills": [
+      "SQL"
+    ]
+  },
+  {
+    "title": "NoSQL with MongoDB",
+    "description": "Store data in MongoDB.",
+    "skills": [
+      "MongoDB"
+    ]
+  },
+  {
+    "title": "Redis for Fast Access",
+    "description": "Use Redis for caching.",
+    "skills": [
+      "Redis"
+    ]
+  },
+  {
+    "title": "Elasticsearch for Search",
+    "description": "Index data in Elasticsearch.",
+    "skills": [
+      "Elasticsearch"
+    ]
+  },
+  {
+    "title": "Tableau Public Dashboard",
+    "description": "Share data stories on Tableau.",
+    "skills": [
+      "Tableau"
+    ]
+  },
+  {
+    "title": "Plotly Dash for Analytics",
+    "description": "Interactive dash apps.",
+    "skills": [
+      "Plotly"
+    ]
+  },
+  {
+    "title": "Bokeh for Visualization",
+    "description": "Web visualizations with Bokeh.",
+    "skills": [
+      "Bokeh"
+    ]
+  },
+  {
+    "title": "Hyperparameter Tuning with Optuna",
+    "description": "Optimize models with Optuna.",
+    "skills": [
+      "Optuna"
+    ]
+  },
+  {
+    "title": "Grid Search vs Random Search",
+    "description": "Compare tuning methods.",
+    "skills": [
+      "Scikit-Learn"
+    ]
+  },
+  {
+    "title": "Cross Validation Techniques",
+    "description": "Robust model evaluation.",
+    "skills": [
+      "Statistics"
+    ]
+  },
+  {
+    "title": "Feature Selection Techniques",
+    "description": "Select best features.",
+    "skills": [
+      "Data Science"
+    ]
+  },
+  {
+    "title": "Dealing with Missing Data",
+    "description": "Imputation strategies.",
+    "skills": [
+      "Data Cleaning"
+    ]
+  },
+  {
+    "title": "Handling Imbalanced Data",
+    "description": "SMOTE and other techniques.",
+    "skills": [
+      "SMOTE"
+    ]
+  },
+  {
+    "title": "Encoding Categorical Features",
+    "description": "One-hot vs Label encoding.",
+    "skills": [
+      "Feature Engineering"
+    ]
+  },
+  {
+    "title": "Scaling and Normalization",
+    "description": "Preprocess data for ML.",
+    "skills": [
+      "Standardization"
+    ]
+  },
+  {
+    "title": "Bias and Variance Trade-off",
+    "description": "Model performance analysis.",
+    "skills": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Ensemble Learning Methods",
+    "description": "Bagging and Boosting.",
+    "skills": [
+      "Ensemble"
+    ]
+  },
+  {
+    "title": "Stacking ML Models",
+    "description": "Advanced ensemble technique.",
+    "skills": [
+      "Stacking"
+    ]
+  },
+  {
+    "title": "Regularization in Regression",
+    "description": "L1, L2 regularization.",
+    "skills": [
+      "Lasso",
+      "Ridge"
+    ]
+  },
+  {
+    "title": "Elastic Net Regression",
+    "description": "Combining L1 and L2.",
+    "skills": [
+      "Regression"
+    ]
+  },
+  {
+    "title": "Quantile Regression",
+    "description": "Regression for quantiles.",
+    "skills": [
+      "Statistics"
+    ]
+  },
+  {
+    "title": "Poisson Regression",
+    "description": "Regression for count data.",
+    "skills": [
+      "GLM"
+    ]
+  },
+  {
+    "title": "Survive the Titanic with R",
+    "description": "Titanic analysis in R.",
+    "skills": [
+      "R"
+    ]
+  },
+  {
+    "title": "Customer Analysis in SQL",
+    "description": "Business insights with SQL.",
+    "skills": [
+      "SQL"
+    ]
+  },
+  {
+    "title": "Python for Finance",
+    "description": "Analyze financial instruments with Python.",
+    "skills": [
+      "FinTech"
+    ]
+  },
+  {
+    "title": "Algorithmic Trading Bot",
+    "description": "Automate trading with Python.",
+    "skills": [
+      "Trading"
+    ]
+  },
+  {
+    "title": "Backtesting Trading Strategies",
+    "description": "Evaluate past performance.",
+    "skills": [
+      "Quant"
+    ]
+  },
+  {
+    "title": "Crypto Price Alert App",
+    "description": "Monitor crypto prices.",
+    "skills": [
+      "Python"
+    ]
+  },
+  {
+    "title": "Real-time Weather Prediction",
+    "description": "Predict weather using sensors.",
+    "skills": [
+      "IOT"
+    ]
+  },
+  {
+    "title": "Smart Home Automation",
+    "description": "Automate home with IOT.",
+    "skills": [
+      "Raspberry Pi"
+    ]
+  },
+  {
+    "title": "Face Mask Detection",
+    "description": "Detect masks in images.",
+    "skills": [
+      "CV"
+    ]
+  },
+  {
+    "title": "Social Distancing Detector",
+    "description": "Monitor distance in public.",
+    "skills": [
+      "CV"
+    ]
+  },
+  {
+    "title": "Hand Tracking with MediaPipe",
+    "description": "Track hands in real-time.",
+    "skills": [
+      "MediaPipe"
+    ]
+  },
+  {
+    "title": "Sign Language Recognition",
+    "description": "Translate signs to text.",
+    "skills": [
+      "CV"
+    ]
+  },
+  {
+    "title": "Virtual Paint using CV",
+    "description": "Draw in air with camera.",
+    "skills": [
+      "Computer Vision"
+    ]
+  },
+  {
+    "title": "Face Mesh with OpenCV",
+    "description": "Map faces in 3D.",
+    "skills": [
+      "OpenCV"
+    ]
+  },
+  {
+    "title": "Object Tracking in Video",
+    "description": "Track objects across frames.",
+    "skills": [
+      "CV"
+    ]
+  },
+  {
+    "title": "Pose Estimation with MoveNet",
+    "description": "Detect human body poses.",
+    "skills": [
+      "Python"
+    ]
+  },
+  {
+    "title": "Self-Driving Car Simulation",
+    "description": "Lane detection and control.",
+    "skills": [
+      "Simulation"
+    ]
+  },
+  {
+    "title": "Dungeon Game AI",
+    "description": "Train AI to play dungeons.",
+    "skills": [
+      "RL"
+    ]
+  },
+  {
+    "title": "Kafka Stream Processing",
+    "description": "Process live streams with Kafka.",
+    "skills": [
+      "Kafka"
+    ]
+  },
+  {
+    "title": "Spark MLlib for Logistic Regression",
+    "description": "Large scale ML with Spark.",
+    "skills": [
+      "Spark MLlib"
+    ]
+  },
+  {
+    "title": "Azure Data Factory ETL",
+    "description": "Orchestrate data with ADF.",
+    "skills": [
+      "Azure"
+    ]
+  },
+  {
+    "title": "GCP Dataflow for Batch Jobs",
+    "description": "Run batch jobs on GCP.",
+    "skills": [
+      "GCP"
+    ]
+  },
+  {
+    "title": "Redshift Data Warehousing",
+    "description": "Manage data in Redshift.",
+    "skills": [
+      "AWS"
+    ]
+  },
+  {
+    "title": "Snowflake Data Analysis",
+    "description": "Analyze datasets in Snowflake.",
+    "skills": [
+      "Snowflake"
+    ]
+  },
+  {
+    "title": "BigQuery for Analytics",
+    "description": "Query TBs of data in BigQuery.",
+    "skills": [
+      "GCP"
+    ]
+  },
+  {
+    "title": "Apache Airflow for DAGs",
+    "description": "Monitor and run DAGs.",
+    "skills": [
+      "Airflow"
+    ]
+  },
+  {
+    "title": "Databricks for Spark Clusters",
+    "description": "Manage clusters in Databricks.",
+    "skills": [
+      "Databricks"
+    ]
+  },
+  {
+    "title": "PowerBI for Business Intelligence",
+    "description": "Build reports in PowerBI.",
+    "skills": [
+      "PowerBI"
+    ]
+  },
+  {
+    "title": "Tableau for Viz Dashboards",
+    "description": "Interactive viz in Tableau.",
+    "skills": [
+      "Tableau"
+    ]
+  },
+  {
+    "title": "SQL Server Integration Services",
+    "description": "ETL with SSIS.",
+    "skills": [
+      "SQL Server"
+    ]
+  },
+  {
+    "title": "Oracle Database Management",
+    "description": "Manage enterprise databases.",
+    "skills": [
+      "Oracle"
+    ]
+  },
+  {
+    "title": "PostgreSQL for Web Apps",
+    "description": "Use Postgres as back-end.",
+    "skills": [
+      "Postgres"
+    ]
+  },
+  {
+    "title": "MySQL for E-commerce",
+    "description": "Store products in MySQL.",
+    "skills": [
+      "MySQL"
+    ]
+  },
+  {
+    "title": "MongoDB for Unstructured Data",
+    "description": "NoSQL with Mongo.",
+    "skills": [
+      "MongoDB"
+    ]
+  },
+  {
+    "title": "Cassandra for Scalability",
+    "description": "Distributed NoSQL with Cassandra.",
+    "skills": [
+      "Cassandra"
+    ]
+  },
+  {
+    "title": "Redis for Real-time App",
+    "description": "Cache with Redis.",
+    "skills": [
+      "Redis"
+    ]
+  },
+  {
+    "title": "Neo4j for Graph Analysis",
+    "description": "Analyze networks with Neo4j.",
+    "skills": [
+      "Neo4j"
+    ]
+  },
+  {
+    "title": "Elasticsearch for Logging",
+    "description": "Log analysis with ELK.",
+    "skills": [
+      "ELK"
+    ]
+  },
+  {
+    "title": "Prometheus for Monitoring",
+    "description": "Monitor apps with Prometheus.",
+    "skills": [
+      "DevOps"
+    ]
+  },
+  {
+    "title": "Grafana for Visualization",
+    "description": "Real-time metrics in Grafana.",
+    "skills": [
+      "Grafana"
+    ]
+  },
+  {
+    "title": "Jenkins for CI/CD",
+    "description": "Automate builds with Jenkins.",
+    "skills": [
+      "Jenkins"
+    ]
+  },
+  {
+    "title": "GitLab for DevOps",
+    "description": "Full lifecycle in GitLab.",
+    "skills": [
+      "GitLab"
+    ]
+  },
+  {
+    "title": "Terraform for IAC",
+    "description": "Provision infra with Terraform.",
+    "skills": [
+      "Terraform"
+    ]
+  },
+  {
+    "title": "Ansible for Configuration",
+    "description": "Config management with Ansible.",
+    "skills": [
+      "Ansible"
+    ]
+  },
+  {
+    "title": "CloudFormation for AWS",
+    "description": "AWS infra as code.",
+    "skills": [
+      "CloudFormation"
+    ]
+  },
+  {
+    "title": "Docker for Containers",
+    "description": "Run apps in Docker.",
+    "skills": [
+      "Docker"
+    ]
+  },
+  {
+    "title": "Kubernetes Clusters",
+    "description": "Manage K8s clusters.",
+    "skills": [
+      "K8s"
+    ]
+  },
+  {
+    "title": "Helm for K8s Apps",
+    "description": "Manage K8s charts.",
+    "skills": [
+      "Helm"
+    ]
+  },
+  {
+    "title": "Tf-Idf with Scikit-Learn",
+    "description": "Extract features from text.",
+    "skills": [
+      "NLP"
+    ]
+  },
+  {
+    "title": "Gensim for Topic Modeling",
+    "description": "Find topics with Gensim.",
+    "skills": [
+      "NLP"
+    ]
+  },
+  {
+    "title": "PyTorch for Deep Learning",
+    "description": "Build NNs with PyTorch.",
+    "skills": [
+      "PyTorch"
+    ]
+  },
+  {
+    "title": "Keras for Rapid Prototyping",
+    "description": "Simple NNs with Keras.",
+    "skills": [
+      "Keras"
+    ]
+  },
+  {
+    "title": "FastAPI for ML Serving",
+    "description": "Serve models with FastAPI.",
+    "skills": [
+      "FastAPI"
+    ]
+  },
+  {
+    "title": "Streamlit for Data Apps",
+    "description": "Build UI with Streamlit.",
+    "skills": [
+      "Streamlit"
+    ]
+  },
+  {
+    "title": "Matplotlib for Plotting",
+    "description": "Basic plots in Python.",
+    "skills": [
+      "Matplotlib"
+    ]
+  },
+  {
+    "title": "Seaborn for Statistical Viz",
+    "description": "Advanced plots in Python.",
+    "skills": [
+      "Seaborn"
+    ]
+  },
+  {
+    "title": "Plotly for Interactive Viz",
+    "description": "Build web plots.",
+    "skills": [
+      "Plotly"
+    ]
+  },
+  {
+    "title": "Bokeh for Web Viz",
+    "description": "Python viz for web.",
+    "skills": [
+      "Bokeh"
+    ]
+  },
+  {
+    "title": "D3.js for Custom Viz",
+    "description": "JS based visualizations.",
+    "skills": [
+      "D3.js"
+    ]
+  },
+  {
+    "title": "R Shiny for Web Apps",
+    "description": "Build R apps with Shiny.",
+    "skills": [
+      "R"
+    ]
+  },
+  {
+    "title": "Pandas for Data Wrangling",
+    "description": "Clean data with Pandas.",
+    "skills": [
+      "Pandas"
+    ]
+  },
+  {
+    "title": "NumPy for Scientific Computing",
+    "description": "Math on arrays.",
+    "skills": [
+      "NumPy"
+    ]
+  },
+  {
+    "title": "Scipy for Optimization",
+    "description": "Scientific routines with Scipy.",
+    "skills": [
+      "Scipy"
+    ]
+  },
+  {
+    "title": "Statsmodels for Regression",
+    "description": "Stats in Python.",
+    "skills": [
+      "Statsmodels"
+    ]
+  },
+  {
+    "title": "NLTK for Language Proc",
+    "description": "Basic NLP with NLTK.",
+    "skills": [
+      "NLP"
+    ]
+  },
+  {
+    "title": "Spacy for Industrial NLP",
+    "description": "High perf NLP with Spacy.",
+    "skills": [
+      "Spacy"
+    ]
+  },
+  {
+    "title": "Textblob for Sentiment",
+    "description": "Easy sentiment with Textblob.",
+    "skills": [
+      "NLP"
+    ]
+  },
+  {
+    "title": "Scrapy for Web Crawling",
+    "description": "Crawl sites with Scrapy.",
+    "skills": [
+      "Scrapy"
+    ]
+  },
+  {
+    "title": "Selenium for Automation",
+    "description": "Web automation with Selenium.",
+    "skills": [
+      "Selenium"
+    ]
+  },
+  {
+    "title": "BeautifulSoup for Scraping",
+    "description": "Simple scraping with BS.",
+    "skills": [
+      "BS4"
+    ]
+  },
+  {
+    "title": "Requests for APIs",
+    "description": "HTTP requests in Python.",
+    "skills": [
+      "Requests"
+    ]
+  },
+  {
+    "title": "Git for Version Control",
+    "description": "Manage code with Git.",
+    "skills": [
+      "Git"
+    ]
+  },
+  {
+    "title": "Bitbucket for Teams",
+    "description": "Collaborate on Bitbucket.",
+    "skills": [
+      "Bitbucket"
+    ]
+  },
+  {
+    "title": "PyCharm for Development",
+    "description": "IDE for Python.",
+    "skills": [
+      "PyCharm"
+    ]
+  },
+  {
+    "title": "VS Code for Polyglot Dev",
+    "description": "Editor for everything.",
+    "skills": [
+      "VS Code"
+    ]
+  },
+  {
+    "title": "Jupyter Notebooks for EDA",
+    "description": "Interactive data work.",
+    "skills": [
+      "Jupyter"
+    ]
+  },
+  {
+    "title": "Google Colab for Training",
+    "description": "Free GPUs for DL.",
+    "skills": [
+      "Colab"
+    ]
+  },
+  {
+    "title": "Kaggle for Competitions",
+    "description": "Learn from datasets on Kaggle.",
+    "skills": [
+      "Kaggle"
+    ]
+  },
+  {
+    "title": "Linux Bash for Scripting",
+    "description": "Automate with Bash.",
+    "skills": [
+      "Linux"
+    ]
+  },
+  {
+    "title": "Windows CMD for Scripts",
+    "description": "Batch scripts on Windows.",
+    "skills": [
+      "Windows"
+    ]
+  },
+  {
+    "title": "PowerShell for Admin",
+    "description": "Powerful scripting on Windows.",
+    "skills": [
+      "PowerShell"
+    ]
+  },
+  {
+    "title": "AWS Lambda for Serverless",
+    "description": "Run code without servers.",
+    "skills": [
+      "Serverless"
+    ]
+  },
+  {
+    "title": "Azure Functions for Events",
+    "description": "Event driven code on Azure.",
+    "skills": [
+      "Azure"
+    ]
+  },
+  {
+    "title": "GCP Functions for Scaling",
+    "description": "Scaling code on GCP.",
+    "skills": [
+      "GCP"
+    ]
+  },
+  {
+    "title": "S3 for Data Lakes",
+    "description": "Store large data on S3.",
+    "skills": [
+      "AWS"
+    ]
+  },
+  {
+    "title": "Blob Storage for Azure",
+    "description": "Object storage on Azure.",
+    "skills": [
+      "Azure"
+    ]
+  },
+  {
+    "title": "Cloud Storage for Google",
+    "description": "Store files on Google Cloud.",
+    "skills": [
+      "GCP"
+    ]
+  },
+  {
+    "title": "DynamoDB for NoSQL",
+    "description": "Fast NoSQL on AWS.",
+    "skills": [
+      "AWS"
+    ]
+  },
+  {
+    "title": "CosmosDB for Global Apps",
+    "description": "Multi model DB on Azure.",
+    "skills": [
+      "Azure"
+    ]
+  },
+  {
+    "title": "Firebase for App Dev",
+    "description": "Backend for mobile apps.",
+    "skills": [
+      "Firebase"
+    ]
+  },
+  {
+    "title": "Swift for iOS Dev",
+    "description": "Build iPhone apps.",
+    "skills": [
+      "Swift"
+    ]
+  },
+  {
+    "title": "Kotlin for Android Dev",
+    "description": "Build Android apps.",
+    "skills": [
+      "Kotlin"
+    ]
+  },
+  {
+    "title": "React for Web Front-end",
+    "description": "Build UIs with React.",
+    "skills": [
+      "React"
+    ]
+  },
+  {
+    "title": "Next.js for Fullstack",
+    "description": "Framework for React.",
+    "skills": [
+      "Next.js"
+    ]
+  },
+  {
+    "title": "Node.js for Backend",
+    "description": "JS on server side.",
+    "skills": [
+      "Node.js"
+    ]
+  },
+  {
+    "title": "TypeScript for Types",
+    "description": "Type safe JS.",
+    "skills": [
+      "TypeScript"
+    ]
+  },
+  {
+    "title": "GraphQL for APIs",
+    "description": "Modern API query language.",
+    "skills": [
+      "GraphQL"
+    ]
+  },
+  {
+    "title": "Postman for API Testing",
+    "description": "Test and doc APIs.",
+    "skills": [
+      "Postman"
+    ]
+  },
+  {
+    "title": "Swagger for API Docs",
+    "description": "Generate API documentation.",
+    "skills": [
+      "Swagger"
+    ]
+  },
+  {
+    "title": "JSON for Data Exchange",
+    "description": "Work with JSON files.",
+    "skills": [
+      "JSON"
+    ]
+  },
+  {
+    "title": "XML for Legacy Data",
+    "description": "Parse XML data.",
+    "skills": [
+      "XML"
+    ]
+  },
+  {
+    "title": "YAML for Config",
+    "description": "Configuration files in YAML.",
+    "skills": [
+      "YAML"
+    ]
+  },
+  {
+    "title": "Markdown for Documentation",
+    "description": "Write READMEs and docs.",
+    "skills": [
+      "Markdown"
+    ]
+  },
+  {
+    "title": "LATEX for Scientific Reports",
+    "description": "Professional typesetting.",
+    "skills": [
+      "LATEX"
+    ]
+  },
+  {
+    "title": "OpenCV for Vision",
+    "description": "Image processing in Python.",
+    "skills": [
+      "OpenCV"
+    ]
+  },
+  {
+    "title": "PIL for Image Editing",
+    "description": "Simple image manipulations.",
+    "skills": [
+      "PIL"
+    ]
+  },
+  {
+    "title": "Librosa for Audio",
+    "description": "Process audio signals.",
+    "skills": [
+      "Librosa"
+    ]
+  },
+  {
+    "title": "MoviePy for Video Edits",
+    "description": "Edit videos in Python.",
+    "skills": [
+      "MoviePy"
+    ]
+  },
+  {
+    "title": "PyGame for Game Dev",
+    "description": "Simple games in Python.",
+    "skills": [
+      "PyGame"
+    ]
+  },
+  {
+    "title": "Unity with C#",
+    "description": "Build 3D games.",
+    "skills": [
+      "Unity"
+    ]
+  },
+  {
+    "title": "Unreal Engine with C++",
+    "description": "AAA game development.",
+    "skills": [
+      "Unreal"
+    ]
+  },
+  {
+    "title": "C++ for High Perf",
+    "description": "High performance computing.",
+    "skills": [
+      "C++"
+    ]
+  },
+  {
+    "title": "Java for Enterprise",
+    "description": "Big corporate systems.",
+    "skills": [
+      "Java"
+    ]
+  },
+  {
+    "title": "Go for Scalability",
+    "description": "Build fast microservices.",
+    "skills": [
+      "Go"
+    ]
+  },
+  {
+    "title": "Rust for System Safety",
+    "description": "Safe systems programming.",
+    "skills": [
+      "Rust"
+    ]
+  },
+  {
+    "title": "Assembly for Low Level",
+    "description": "Understanding machine code.",
+    "skills": [
+      "Assembly"
+    ]
+  },
+  {
+    "title": "VHDL for Hardware Dev",
+    "description": "Program FPGAs.",
+    "skills": [
+      "VHDL"
+    ]
+  },
+  {
+    "title": "MATLAB for Research",
+    "description": "Numerical analysis tool.",
+    "skills": [
+      "MATLAB"
+    ]
+  }
+]
