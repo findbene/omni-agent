@@ -25,6 +25,12 @@ function mountUI() {
   style.textContent = styleText || '/* fallback */';
   shadow.appendChild(style);
 
+  // Inject Inter font from Google Fonts
+  const fontLink = document.createElement('link');
+  fontLink.rel = 'stylesheet';
+  fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
+  shadow.appendChild(fontLink);
+
   // Create React mount point
   const root = document.createElement('div');
   root.style.cssText = 'height:100%;width:0;';

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Bot, X, Send, Youtube, BookOpen, Paperclip, Camera, History, BookMarked, Search, SplitSquareHorizontal, Sun, Moon, Plus, ChevronDown } from 'lucide-react';
+import { Bot, X, Send, Youtube, BookOpen, Paperclip, Camera, History, BookMarked, Search, SplitSquareHorizontal, Sun, Moon, Plus, ChevronDown, Sparkles, Clapperboard, Globe, Database, Check, Mic, Square } from 'lucide-react';
+import Toast from './Toast';
 import ChatMessage from './ChatMessage';
 import MacroBar from './MacroBar';
 import SelectionToolbar from './SelectionToolbar';
@@ -65,6 +66,13 @@ export default function Sidebar() {
   const [showDurationPicker, setShowDurationPicker] = useState(false);
   const videoAbortRef = useRef<AbortController | null>(null);
 
+  // Wave 2A — new UI state
+  const [fabExpanded, setFabExpanded] = useState(false);
+  const [showModelModal, setShowModelModal] = useState(false);
+  const [toastMsg, setToastMsg] = useState('');
+  const [toastVisible, setToastVisible] = useState(false);
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -73,6 +81,14 @@ export default function Sidebar() {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const dragStartX = useRef(0);
   const dragStartWidth = useRef(420);
+
+  // ─── Toast helper ───
+  const showToast = useCallback((msg: string) => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    setToastMsg(msg);
+    setToastVisible(true);
+    toastTimerRef.current = setTimeout(() => setToastVisible(false), 2500);
+  }, []);
 
   // Auto-scroll
   useEffect(() => {
@@ -629,17 +645,90 @@ export default function Sidebar() {
       {/* Selection Toolbar (always mounted, shows on selection) */}
       <SelectionToolbar onAction={handleSelectionAction} />
 
-      {/* Floating Action Button */}
+      {/* Floating Action Button — expandable with satellites */}
       {!isOpen && (
-        <button
-          className="omni-fab"
-          onClick={() => contextInvalid ? window.location.reload() : setIsOpen(true)}
-          aria-label={contextInvalid ? 'Extension updated — click to reload page' : 'Open Omni-Agent'}
-          title={contextInvalid ? '⚠️ Extension updated. Click to reload the page.' : undefined}
-          style={contextInvalid ? { background: 'linear-gradient(135deg, #ef4444, #dc2626)', animation: 'none' } : undefined}
-        >
-          {contextInvalid ? '↻' : <Bot size={26} />}
-        </button>
+        <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 2147483645 }}>
+          <button
+            className={`omni-fab${fabExpanded ? ' expanded' : ''}`}
+            onClick={() => {
+              if (contextInvalid) { window.location.reload(); return; }
+              if (fabExpanded) {
+                setFabExpanded(false);
+                setIsOpen(true);
+              } else {
+                setFabExpanded(true);
+              }
+            }}
+            aria-label={contextInvalid ? 'Extension updated — click to reload page' : 'Open Omni-Agent'}
+            title={contextInvalid ? 'Extension updated. Click to reload the page.' : 'Open Omni-Agent'}
+            style={contextInvalid ? { background: 'linear-gradient(135deg, #ef4444, #dc2626)', animation: 'none' } : undefined}
+          >
+            {contextInvalid ? '↻' : fabExpanded ? <X size={20} /> : <Sparkles size={20} />}
+
+            {/* Satellite: Screenshot */}
+            <button
+              className="omni-fab-satellite"
+              style={{ '--sat-x': '-60px', '--sat-y': '-60px' } as React.CSSProperties}
+              onClick={(e) => {
+                e.stopPropagation();
+                setFabExpanded(false);
+                setIsOpen(true);
+                setTimeout(() => handleScreenshot(), 100);
+              }}
+              title="Screenshot"
+              aria-label="Screenshot"
+            >
+              <Camera size={16} />
+            </button>
+
+            {/* Satellite: Voice */}
+            <button
+              className="omni-fab-satellite"
+              style={{ '--sat-x': '0px', '--sat-y': '-76px' } as React.CSSProperties}
+              onClick={(e) => {
+                e.stopPropagation();
+                setFabExpanded(false);
+                toggleRecording();
+              }}
+              title={isRecording ? 'Stop recording' : 'Record voice'}
+              aria-label={isRecording ? 'Stop recording' : 'Record voice'}
+            >
+              {isRecording ? <Square size={16} style={{ fill: 'currentColor' }} /> : <Mic size={16} />}
+            </button>
+
+            {/* Satellite: Transcribe video */}
+            <button
+              className="omni-fab-satellite"
+              style={{ '--sat-x': '-76px', '--sat-y': '0px' } as React.CSSProperties}
+              onClick={(e) => {
+                e.stopPropagation();
+                setFabExpanded(false);
+                setIsOpen(true);
+                setTimeout(() => sendMessage('VIDEO_TRANSCRIBE', 'Transcribe'), 100);
+              }}
+              title="Transcribe video"
+              aria-label="Transcribe video"
+            >
+              <Clapperboard size={16} />
+            </button>
+
+            {/* Satellite: New chat */}
+            <button
+              className="omni-fab-satellite"
+              style={{ '--sat-x': '-60px', '--sat-y': '60px' } as React.CSSProperties}
+              onClick={(e) => {
+                e.stopPropagation();
+                setFabExpanded(false);
+                setIsOpen(true);
+                setTimeout(() => startNewChat(), 100);
+              }}
+              title="New chat"
+              aria-label="New chat"
+            >
+              <Plus size={16} />
+            </button>
+          </button>
+        </div>
       )}
 
       {/* Sidebar Panel */}
@@ -649,6 +738,7 @@ export default function Sidebar() {
           className="omni-sidebar"
           style={{ width: `${sidebarWidth}px` }}
           data-theme={theme}
+          data-streaming={loading && streamingText ? 'true' : 'false'}
         >
           {/* Resize handle */}
           <div
@@ -668,80 +758,68 @@ export default function Sidebar() {
 
           {/* Header */}
           <div className="omni-header">
-            <div className="omni-header-title">
-              <Bot size={18} />
-              <span>Omni-Agent</span>
-            </div>
-            <div className="omni-header-actions" style={{ flexWrap: 'wrap', gap: '4px' }}>
-              {/* Model selector */}
-              <div style={{ position: 'relative' }}>
-                <button
-                  onClick={() => setShowModelMenu(!showModelMenu)}
-                  className="omni-model-select"
-                  style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer' }}
-                >
-                  {MODELS.find(m => m.id === selectedModel)?.icon || '⚡'}
-                  {MODELS.find(m => m.id === selectedModel)?.name?.split(' ').slice(0, 2).join(' ') || 'Model'}
-                  <ChevronDown size={10} />
-                </button>
-                {showModelMenu && (
-                  <div style={{
-                    position: 'absolute', top: '100%', right: 0, marginTop: '4px',
-                    background: 'rgba(15,20,40,0.99)', border: '1px solid rgba(255,255,255,0.12)',
-                    borderRadius: '12px', padding: '6px', minWidth: '220px', zIndex: 100,
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.6)', backdropFilter: 'blur(20px)',
-                  }}>
-                    {['google', 'openai', 'anthropic', 'deepseek', 'groq', 'ollama'].map(provider => {
-                      const providerModels = MODELS.filter(m => m.provider === provider);
-                      if (!providerModels.length) return null;
-                      return (
-                        <div key={provider}>
-                          <div style={{ fontSize: '9px', fontWeight: 700, color: '#475569', padding: '4px 8px 2px', textTransform: 'uppercase', letterSpacing: '0.07em' }}>{provider}</div>
-                          {providerModels.map(m => (
-                            <button
-                              key={m.id}
-                              onClick={() => { setSelectedModel(m.id); setShowModelMenu(false); safeStorageSet({ selectedModel: m.id }); }}
-                              style={{
-                                display: 'flex', alignItems: 'center', gap: '8px', width: '100%',
-                                padding: '6px 8px', borderRadius: '8px', border: 'none', cursor: 'pointer',
-                                background: selectedModel === m.id ? 'rgba(99,102,241,0.2)' : 'transparent',
-                                color: selectedModel === m.id ? '#818cf8' : '#e2e8f0',
-                                fontSize: '12px', textAlign: 'left', transition: 'background 0.1s',
-                              }}
-                            >
-                              <span style={{ fontSize: '14px' }}>{m.icon}</span>
-                              <div>
-                                <div style={{ fontWeight: 600 }}>{m.name}</div>
-                                <div style={{ fontSize: '10px', color: '#64748b' }}>{m.description}</div>
-                              </div>
-                            </button>
-                          ))}
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-              {showModelMenu && <div style={{ position: 'fixed', inset: 0, zIndex: 99 }} onClick={() => setShowModelMenu(false)} />}
+            {/* Wordmark */}
+            <span style={{ fontWeight: 700, fontSize: 15, color: 'var(--omni-text)', letterSpacing: -0.3 }}>
+              omni<span style={{ color: 'var(--omni-accent)' }}>.</span>
+            </span>
 
-              {/* New Chat */}
-              <button className="omni-header-btn" onClick={startNewChat} title="New chat" aria-label="New chat"><Plus size={15} /></button>
-              {/* History */}
-              <button className="omni-header-btn" onClick={loadHistory} title="Chat history" aria-label="Chat history"><History size={15} /></button>
-              {/* Search */}
-              <button className="omni-header-btn" onClick={() => setShowSearch(!showSearch)} title="Search chat" aria-label="Search chat"><Search size={15} /></button>
-              {/* Knowledge Base */}
-              <button className="omni-header-btn" onClick={() => setShowKnowledge(true)} title="Knowledge base" aria-label="Knowledge base"><BookMarked size={15} /></button>
-              {/* Compare Mode */}
-              <button className="omni-header-btn" onClick={() => setCompareMode(!compareMode)} title="Compare AI models" aria-label="Compare mode" style={{ background: compareMode ? 'rgba(99,102,241,0.4)' : undefined }}><SplitSquareHorizontal size={15} /></button>
-              {/* Theme Toggle */}
-              <button className="omni-header-btn" onClick={() => { const next = isDark ? 'light' : 'dark'; setTheme(next); safeStorageSet({ theme: next }); }} title="Toggle theme" aria-label="Toggle theme">
-                {isDark ? <Sun size={15} /> : <Moon size={15} />}
-              </button>
-              {/* Close */}
-              <button className="omni-header-btn" onClick={() => setIsOpen(false)} aria-label="Close sidebar"><X size={15} /></button>
-            </div>
+            {/* Model badge — click to open model picker modal */}
+            <button
+              className="omni-model-badge"
+              onClick={() => setShowModelModal(v => !v)}
+              title="Change model"
+              style={{ marginLeft: 'auto', marginRight: 4 }}
+            >
+              {MODELS.find(m => m.id === selectedModel)?.name?.split(' ').slice(0, 2).join(' ') || 'Model'}
+            </button>
+
+            {/* Secondary header actions */}
+            <button className="omni-close" onClick={startNewChat} title="New chat" aria-label="New chat"><Plus size={15} /></button>
+            <button className="omni-close" onClick={loadHistory} title="Chat history" aria-label="Chat history"><History size={15} /></button>
+            <button className="omni-close" onClick={() => setShowSearch(!showSearch)} title="Search chat" aria-label="Search chat"><Search size={15} /></button>
+            <button className="omni-close" onClick={() => setCompareMode(!compareMode)} title="Compare AI models" aria-label="Compare mode" style={{ color: compareMode ? 'var(--omni-accent)' : undefined }}><SplitSquareHorizontal size={15} /></button>
+            <button className="omni-close" onClick={() => { const next = isDark ? 'light' : 'dark'; setTheme(next); safeStorageSet({ theme: next }); }} title="Toggle theme" aria-label="Toggle theme">
+              {isDark ? <Sun size={15} /> : <Moon size={15} />}
+            </button>
+            {/* Knowledge Base */}
+            <button className="omni-close" onClick={() => setShowKnowledge(true)} title="Knowledge base" aria-label="Knowledge base">
+              <BookOpen size={15} />
+            </button>
+            {/* Close */}
+            <button className="omni-close" onClick={() => setIsOpen(false)} aria-label="Close sidebar"><X size={15} /></button>
           </div>
+
+          {/* Model picker modal — slide up from bottom */}
+          {showModelModal && (
+            <div className="omni-model-modal" onClick={e => e.stopPropagation()}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--omni-text-muted)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                Select Model
+              </div>
+              {['google', 'openai', 'anthropic', 'deepseek', 'groq', 'ollama'].map(provider => {
+                const providerModels = MODELS.filter(m => m.provider === provider);
+                if (!providerModels.length) return null;
+                return (
+                  <div key={provider}>
+                    <div style={{ fontSize: 9, fontWeight: 700, color: 'var(--omni-text-muted)', padding: '4px 4px 2px', textTransform: 'uppercase', letterSpacing: '0.07em' }}>{provider}</div>
+                    {providerModels.map(m => (
+                      <button
+                        key={m.id}
+                        className={`omni-model-modal-item${selectedModel === m.id ? ' selected' : ''}`}
+                        onClick={() => { setSelectedModel(m.id); safeStorageSet({ selectedModel: m.id }); setShowModelModal(false); }}
+                      >
+                        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <span style={{ fontSize: 14 }}>{m.icon}</span>
+                          <span>{m.name}</span>
+                        </span>
+                        {selectedModel === m.id && <Check size={13} />}
+                      </button>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          {showModelModal && <div style={{ position: 'fixed', inset: 0, zIndex: 9 }} onClick={() => setShowModelModal(false)} />}
 
           {/* Knowledge Base Panel */}
           {showKnowledge && (
@@ -901,16 +979,56 @@ export default function Sidebar() {
             ) : (
               // Normal chat view
               <>
-                {filteredMessages.length === 0 && !streamingText && (
-                  <div className="omni-empty">
-                    <Bot size={48} className="omni-empty-icon" />
-                    <p className="omni-empty-title">Welcome to Omni-Agent</p>
-                    <p className="omni-empty-sub">
-                      Select a macro above or type a question. Select any text on the page for quick AI actions.
-                      Press <strong>Ctrl+Shift+O</strong> to toggle.
-                    </p>
-                  </div>
-                )}
+                {filteredMessages.length === 0 && !streamingText && !loading && (() => {
+                  const emptyStateTitle = isYT
+                    ? 'YouTube detected'
+                    : 'What can I help with?';
+                  const emptyStateSubtitle = isYT
+                    ? 'Summarize, translate, or ask about this video'
+                    : 'Ask anything about this page, or use a quick action below';
+                  const emptySuggestedActions = isYT
+                    ? [
+                        { action: 'SUMMARIZE_PAGE', label: 'Summarize', icon: <Sparkles size={12} /> },
+                        { action: 'VIDEO_TRANSCRIBE', label: 'Transcribe', icon: <Clapperboard size={12} /> },
+                        { action: 'TRANSLATE', label: 'Translate', icon: <Globe size={12} /> },
+                      ]
+                    : [
+                        { action: 'SUMMARIZE_PAGE', label: 'Summarize', icon: <Sparkles size={12} /> },
+                        { action: 'EXTRACT_DATA', label: 'Extract Data', icon: <Database size={12} /> },
+                        { action: 'DEEP_RESEARCH', label: 'Research', icon: <Search size={12} /> },
+                      ];
+                  return (
+                    <div className="omni-empty-state">
+                      <div style={{
+                        width: 48, height: 48, borderRadius: '50%',
+                        background: 'linear-gradient(135deg, var(--omni-accent), var(--omni-accent-2, #7c3aed))',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        boxShadow: '0 8px 24px var(--omni-accent-glow)',
+                      }}>
+                        <Sparkles size={22} color="white" />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--omni-text)', marginBottom: 6 }}>
+                          {emptyStateTitle}
+                        </div>
+                        <div style={{ fontSize: 12, color: 'var(--omni-text-muted)', lineHeight: 1.6 }}>
+                          {emptyStateSubtitle}
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, justifyContent: 'center' }}>
+                        {emptySuggestedActions.map(action => (
+                          <button
+                            key={action.action}
+                            className="omni-chip"
+                            onClick={() => sendMessage(action.action, action.label)}
+                          >
+                            {action.icon} {action.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
                 {filteredMessages.map((m, i) => (
                   <ChatMessage
                     key={i}
@@ -999,6 +1117,9 @@ export default function Sidebar() {
               </button>
             </div>
           </div>
+
+          {/* Toast notification */}
+          <Toast message={toastMsg} visible={toastVisible} />
         </div>
       )}
     </>

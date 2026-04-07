@@ -111,54 +111,51 @@ export default function ChatMessage({ role, content, isStreaming, onRetry }: Cha
           dangerouslySetInnerHTML={{ __html: html }}
         />
         {!isStreaming && content.length > 0 && (
-          <div style={{ display: 'flex', gap: '2px', marginTop: '4px', paddingLeft: '4px', flexWrap: 'wrap' }}>
+          <div className="omni-msg-actions">
             {/* Copy */}
             <button
               onClick={handleCopy}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 6px', color: copied ? '#22c55e' : '#64748b', display: 'flex', alignItems: 'center', gap: '3px', fontSize: '10px', transition: 'color 0.15s', borderRadius: '4px' }}
+              className={`omni-action-btn${copied ? ' active' : ''}`}
               title="Copy to clipboard"
             >
-              {copied ? <Check size={11} /> : <Copy size={11} />}
-              {copied ? 'Copied' : 'Copy'}
+              {copied ? <Check size={12} /> : <Copy size={12} />}
             </button>
 
             {/* Download */}
             <button
               onClick={handleDownload}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 6px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '3px', fontSize: '10px', transition: 'color 0.15s', borderRadius: '4px' }}
+              className="omni-action-btn"
               title="Download"
             >
-              <Download size={11} /> Save
+              <Download size={12} />
             </button>
 
             {/* Save to KB */}
             <button
               onClick={handleSaveToKB}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 6px', color: saved ? '#fbbf24' : '#64748b', display: 'flex', alignItems: 'center', gap: '3px', fontSize: '10px', transition: 'color 0.15s', borderRadius: '4px' }}
+              className={`omni-action-btn${saved ? ' active' : ''}`}
               title={saved ? 'Saved to Knowledge Base!' : 'Save to Knowledge Base'}
             >
-              <Star size={11} style={{ fill: saved ? '#fbbf24' : 'none' }} />
-              {saved ? 'Saved!' : 'Save'}
+              <Star size={12} />
             </button>
 
             {/* Text-to-Speech */}
             <button
               onClick={handleTTS}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 6px', color: speaking ? '#818cf8' : '#64748b', display: 'flex', alignItems: 'center', gap: '3px', fontSize: '10px', transition: 'color 0.15s', borderRadius: '4px' }}
+              className={`omni-action-btn${speaking ? ' active' : ''}`}
               title={speaking ? 'Stop speaking' : 'Read aloud'}
             >
-              {speaking ? <VolumeX size={11} /> : <Volume2 size={11} />}
-              {speaking ? 'Stop' : 'Read'}
+              {speaking ? <VolumeX size={12} /> : <Volume2 size={12} />}
             </button>
 
             {/* Retry on error */}
             {isError && onRetry && (
               <button
                 onClick={onRetry}
-                style={{ background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)', cursor: 'pointer', padding: '4px 8px', color: '#818cf8', display: 'flex', alignItems: 'center', gap: '3px', fontSize: '10px', borderRadius: '6px', fontWeight: 600, marginLeft: 'auto' }}
+                className="omni-action-btn active"
                 title="Retry this request"
               >
-                <RotateCcw size={11} /> Retry
+                <RotateCcw size={12} />
               </button>
             )}
 
@@ -167,11 +164,10 @@ export default function ChatMessage({ role, content, isStreaming, onRetry }: Cha
               <button
                 onClick={handleRunAutomation}
                 disabled={running}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 6px', color: '#eab308', display: 'flex', alignItems: 'center', gap: '3px', fontSize: '10px', transition: 'color 0.15s', fontWeight: 600, marginLeft: 'auto', borderRadius: '4px' }}
+                className="omni-action-btn"
                 title="Run Automation"
               >
-                {running ? <Zap size={11} className="omni-spin" /> : <Play size={11} />}
-                {running ? 'Running...' : 'Run Automation'}
+                {running ? <Zap size={12} className="omni-spin" /> : <Play size={12} />}
               </button>
             )}
           </div>

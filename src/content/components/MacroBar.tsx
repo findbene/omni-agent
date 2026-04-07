@@ -49,9 +49,9 @@ export default function MacroBar({ onMacro, disabled, isRecording, onToggleRecor
           onClick={() => onMacro(m.action, m.label)}
           disabled={disabled}
           title={m.title}
-          style={{ background: m.color }}
+          data-label={m.label}
         >
-          {m.icon} {m.label}
+          {m.icon}
         </button>
       ))}
       <button
@@ -59,15 +59,11 @@ export default function MacroBar({ onMacro, disabled, isRecording, onToggleRecor
         onClick={onToggleRecording}
         disabled={disabled && !isRecording}
         title={isRecording ? 'Stop recording' : 'Record voice input'}
-        style={{
-          background: isRecording ? 'rgba(239,68,68,0.15)' : 'rgba(239,68,68,0.08)',
-          color: isRecording ? '#f87171' : undefined,
-          ...(isRecording ? { animation: 'fabPulse 1.5s ease-in-out infinite' } : {})
-        }}
+        data-label={isRecording ? 'Stop' : 'Record'}
       >
         {isRecording
-          ? <><Square size={13} style={{ fill: 'currentColor' }} /> Stop</>
-          : <><Mic size={13} /> Record</>}
+          ? <Square size={13} style={{ fill: 'currentColor' }} />
+          : <Mic size={13} />}
       </button>
     </div>
   );
